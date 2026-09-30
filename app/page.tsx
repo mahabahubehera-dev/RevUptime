@@ -1,0 +1,3 @@
+import { Hero } from '@/components/marketing/hero';
+import { ProblemSection, HowItWorks, ProductSection, CopilotSection, AIIntelligenceSection, ExplainableAISection, ConditionTimelineSection, MobileSection, AssetSection, IndustriesSection, WhySection, PilotSection, OutcomesSection, CompanySection, FinalCTA } from '@/components/marketing/sections';
+export default function Home(){return <main id="main"><Hero/><ProblemSection/><HowItWorks/><ProductSection/><AIIntelligenceSection/><CopilotSection/><ExplainableAISection/><ConditionTimelineSection/><MobileSection/><AssetSection/><IndustriesSection/><WhySection/><PilotSection/><OutcomesSection/><CompanySection/><FinalCTA/></main>;}

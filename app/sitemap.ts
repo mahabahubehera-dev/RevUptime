@@ -1,0 +1,2 @@
+import type { MetadataRoute } from 'next';
+export default function sitemap():MetadataRoute.Sitemap{return ['','/product','/solutions/predictive-maintenance','/industries/steel','/industries/mining','/industries/manufacturing','/pilot','/about','/contact','/privacy','/terms'].map(path=>({url:`https://revuptime.com${path}`,changeFrequency:'monthly',priority:path===''?1:path==='/privacy'||path==='/terms'?.3:.8}));}
