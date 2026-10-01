@@ -37,4 +37,6 @@ Dashboard, Copilot and mobile views use explicitly labelled illustrative data. F
 
 ## Routes
 
-`/`, `/product`, `/solutions/predictive-maintenance`, `/industries/steel`, `/industries/mining`, `/industries/manufacturing`, `/pilot`, `/about`, `/contact`, `/privacy`, `/terms`, `/sign-in`, plus a custom 404, sitemap and robots.txt.
+`/`, `/product`, `/solutions`, `/solutions/predictive-maintenance`, `/resources`, `/industries/steel`, `/industries/mining`, `/industries/manufacturing`, `/industries/cement`, `/industries/chemicals-fertilizer`, `/industries/pulp-paper`, `/industries/tires`, `/industries/food-beverage`, `/industries/pharma`, `/pilot`, `/about`, `/contact`, `/privacy`, `/terms`, `/sign-in`, plus a custom 404, sitemap and robots.txt.
+
+The Resources page includes a downloadable industrial reliability guide. The guide form uses the same HTTPS `LEAD_WEBHOOK_URL` receiver as pilot enquiries and enables the download only after the receiver accepts the lead.

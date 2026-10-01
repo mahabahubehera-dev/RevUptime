@@ -57,9 +57,10 @@ export function HowItWorks() {
     <section className="section workflow-section" id="how-it-works">
       <div className="container">
         <div className="workflow-intro">
-          <span className="section-eyebrow">HOW REVUPTIME WORKS</span>
-          <h2>From a signal on the floor to an<br className="workflow-title-break"/> outcome the enterprise can see</h2>
-          <p>One loop runs continuously across your plant. Each pass sharpens the next prescription.</p>
+          <span className="section-eyebrow">THE REVUPTIME TRUST LOOP · SIX STEPS</span>
+          <h2>From a plant signal to a<br className="workflow-title-break"/> validated business outcome</h2>
+          <p>Connect machine data to an operator-reviewed action, then roll validated uptime, throughput and cost-per-ton impact into enterprise reporting.</p>
+          <small className="workflow-trust-note">“99% Trust Loop” is a workflow concept, not a RevUptime accuracy or performance claim.</small>
         </div>
 
         <div className="workflow-layout">

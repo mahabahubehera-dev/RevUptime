@@ -6,11 +6,11 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 export const metadata: Metadata = {
   metadataBase: new URL('https://revuptime.com'),
-  title: { default: 'RevUptime | AI Predictive Maintenance & Industrial Asset Monitoring', template: '%s | RevUptime' },
-  description: 'RevUptime provides AI-powered condition monitoring, predictive maintenance and asset-health intelligence for motors, pumps, conveyors and industrial rotating equipment.',
+  title: { default: 'RevUptime | AI That Understands Machines Before They Fail', template: '%s | RevUptime' },
+  description: 'RevUptime turns industrial machine data into AI-powered maintenance decisions using condition monitoring, anomaly detection, fault prediction and explainable recommendations.',
   alternates: { canonical: '/' },
-  openGraph: { type: 'website', siteName: 'RevUptime', title: 'RevUptime — Keep Machines Running.', description: 'AI-assisted condition monitoring and predictive maintenance for industrial operations.', locale: 'en_IN' },
-  twitter: { card: 'summary', title: 'RevUptime — Keep Machines Running.', description: 'AI-assisted condition monitoring for industrial operations.' },
+  openGraph: { type: 'website', siteName: 'RevUptime', title: 'RevUptime — AI That Understands Machines Before They Fail.', description: 'Turn machine data into predictive maintenance decisions with explainable AI for industrial teams.', locale: 'en_IN' },
+  twitter: { card: 'summary', title: 'RevUptime — AI That Understands Machines Before They Fail.', description: 'AI-powered predictive maintenance and machine health intelligence for industrial operations.' },
   icons: { icon: '/icons/favicon.svg' },
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
