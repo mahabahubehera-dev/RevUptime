@@ -336,3 +336,76 @@
 .prediction-visual figcaption a{color:#166db9;text-decoration:underline;text-underline-offset:2px}
 @media(max-width:1023px){.prediction-section>.container{grid-template-columns:1fr;gap:32px}.prediction-copy{max-width:760px}.prediction-visual{max-width:800px}}
 @media(max-width:767px){.prediction-copy h2{font-size:32px}.prediction-example{padding:16px}.prediction-visual{padding:8px}}
+
+/* Image-led industry cards keep navigation and copy readable at every size. */
+.industry-photo-card{padding:0;overflow:hidden;display:flex;flex-direction:column;border-radius:12px;transition:box-shadow .2s,border-color .2s,transform .2s}
+.industry-card-photo{position:relative;aspect-ratio:3/2;overflow:hidden;background:#dfe6ed}
+.industry-card-photo img{object-fit:cover;transition:transform .35s ease}
+.industry-card-copy{padding:26px;display:flex;flex-direction:column;flex:1}
+.industry-card-copy .micro{display:block;font-size:9px;letter-spacing:.1em;color:#526c88}
+.industry-card-copy p{flex:1}
+.industry-card-copy .text-link{gap:8px;align-self:flex-start;font-size:12px}
+.industry-photo-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px #10244312}
+.industry-photo-card:hover img{transform:scale(1.035)}
+.industry-photo-card:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+.industry-image-note{margin-top:22px;font-size:11px;color:#788698}
+@media(max-width:600px){.industry-card-copy{padding:23px}.industry-card-photo{aspect-ratio:16/10}}
+@media(prefers-reduced-motion:reduce){.industry-photo-card,.industry-card-photo img{transition:none}.industry-photo-card:hover,.industry-photo-card:hover img{transform:none}}
+
+.asset-photo-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.asset-photo-card{padding:0;border-radius:12px;background:#fff;display:flex;flex-direction:column}
+.asset-photo{position:relative;aspect-ratio:3/2;overflow:hidden;background:#e5ebf0}
+.asset-photo img{object-fit:cover;transition:transform .35s ease}
+.asset-photo-label{position:absolute;left:18px;bottom:16px;padding:7px 10px;border-radius:4px;background:#10213de6;color:white;font-size:9px;letter-spacing:.12em}
+.asset-photo-copy{padding:23px 25px 25px;display:flex;flex-direction:column;flex:1}
+.asset-photo-card h3{font-size:22px}
+.asset-photo-card p{font-size:13px;line-height:1.7;flex:1}
+.asset-photo-card .asset-explore{display:flex;align-items:center;gap:8px;margin-top:22px;font-size:12px}
+.asset-photo-card:hover img{transform:scale(1.035)}
+.asset-photo-card:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+@media(max-width:900px){.asset-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
+@media(max-width:600px){.asset-photo-grid{grid-template-columns:1fr}.asset-photo{aspect-ratio:16/10}.asset-photo-copy{padding:22px}}
+@media(prefers-reduced-motion:reduce){.asset-photo-card,.asset-photo img{transition:none}.asset-photo-card:hover,.asset-photo-card:hover img{transform:none}}
+
+.solution-photo-card{padding:0;overflow:hidden;border-radius:12px;display:flex;flex-direction:column}
+.solution-photo-card .asset-photo-copy p{flex:initial}
+
+/* The supplied diagram introduces the existing six-stage reliability loop. */
+.workflow-diagram{margin:0 0 64px;border:1px solid #dce6f1;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 12px 40px #142a4510}
+.workflow-diagram-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 32px;border-bottom:1px solid #e8eef5}
+.workflow-diagram-heading .section-eyebrow{font-size:9px;margin-bottom:10px}
+.workflow-diagram-heading h3{font-size:25px;line-height:1.25;letter-spacing:-.035em;color:#10213d}
+.workflow-diagram-heading>a{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:#176bb1;white-space:nowrap;min-height:44px;text-decoration:underline;text-underline-offset:4px}
+.workflow-diagram-image{display:block;cursor:zoom-in;background:#f8fafc}
+.workflow-diagram-image img{display:block;width:100%;height:auto}
+.workflow-diagram-image:focus-visible,.workflow-diagram-heading>a:focus-visible{outline:3px solid #168cf1;outline-offset:-3px}
+.workflow-diagram figcaption{display:flex;align-items:center;justify-content:center;gap:16px;padding:18px 24px;border-top:1px solid #e8eef5;color:#173c63;font-size:13px;font-weight:600}
+.workflow-diagram figcaption span[aria-hidden]{color:#168cf1}
+.workflow-loop-heading{margin-bottom:26px}.workflow-loop-heading .section-eyebrow{margin-bottom:12px}.workflow-loop-heading p{font-size:15px;line-height:1.7;color:#59687c;max-width:680px}
+@media(max-width:600px){.workflow-diagram{margin-bottom:40px;border-radius:12px}.workflow-diagram-heading{padding:20px;align-items:flex-start;gap:10px;flex-direction:column}.workflow-diagram-heading h3{font-size:22px}.workflow-diagram-heading>a{font-size:12px;min-height:36px}.workflow-diagram figcaption{gap:9px;padding:15px 10px;font-size:11px}.workflow-loop-heading p{font-size:14px}}
+
+/* Installation-to-maintenance workflow: readable long-form steps. */
+.workflow-installation .workflow-layout{align-items:start}
+.workflow-installation .workflow-stages button{min-height:132px;padding-block:24px;align-items:start}
+.workflow-installation .workflow-stage-number{margin-top:3px}
+.workflow-installation .workflow-stage-copy strong{font-size:21px;line-height:1.3}
+.workflow-installation .workflow-stage-copy>span{font-size:14px;line-height:1.8}
+.workflow-installation .workflow-cycle-wrap{position:sticky;top:110px}
+.workflow-cycle-hint{max-width:270px;margin-top:14px;text-align:center;font-size:12px;line-height:1.7;color:#64748b}
+.workflow-setup-note{margin-top:32px;padding:20px 24px;border-left:3px solid #168cf1;border-radius:0 8px 8px 0;background:#f2f7fc;font-size:14px;line-height:1.8;color:#445b75}
+@media(max-width:767px){.workflow-installation .workflow-cycle-wrap{position:static}.workflow-installation .workflow-stages button{min-height:0;padding-block:24px}.workflow-installation .workflow-stage-copy strong{font-size:19px}.workflow-installation .workflow-stage-copy>span{font-size:14px}.workflow-setup-note{padding:18px;font-size:13px}}
+.workflow-installation{overflow:clip}
+
+/* The supplied signal-flow image replaces the circular workflow animation. */
+.workflow-installation .workflow-image-panel{padding:12px 0;gap:0}
+.workflow-image-panel .workflow-diagram{width:100%;margin:0 0 20px;border-radius:12px}
+.workflow-image-panel .workflow-diagram-heading{padding:12px 20px;flex-direction:row;align-items:center;gap:12px;flex-wrap:wrap}
+.workflow-image-panel .workflow-diagram-heading .section-eyebrow{margin-bottom:0}
+.workflow-image-panel .workflow-diagram-heading>a{min-height:32px}
+.workflow-image-panel .workflow-diagram figcaption{font-size:11px;gap:10px;padding:12px 10px}
+.workflow-active-detail{width:100%;padding:0 12px 16px}
+.workflow-active-detail .section-eyebrow{margin-bottom:12px}
+.workflow-active-detail h3{font-size:23px;line-height:1.3;letter-spacing:-.03em;margin-bottom:13px}
+.workflow-active-detail p{color:#59687c;font-size:14px;line-height:1.8}
+.workflow-image-panel .workflow-cycle-hint{max-width:none}
+@media(max-width:767px){.workflow-installation .workflow-image-panel{padding:0}.workflow-active-detail{padding-inline:0}}

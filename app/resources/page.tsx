@@ -5,7 +5,7 @@ import { WhitepaperLeadForm } from '@/components/marketing/whitepaper-lead-form'
 const reading = [
   { label: 'FIELD GUIDE', title: 'A practical guide to machine condition monitoring', text: 'A concise introduction to choosing assets, establishing baselines and reviewing condition alerts with your maintenance team.', href: '/resources/revuptime-industrial-reliability-guide.html', icon: FileText },
   { label: 'HOW IT WORKS', title: 'From a machine signal to a maintenance decision', text: 'Follow the Sense, Understand, Prescribe, Act, Validate and Outcomes workflow.', href: '/#how-it-works', icon: BookOpen },
-  { label: 'INDUSTRY NOTES', title: 'Condition monitoring across industrial operations', text: 'Explore equipment and operating context for steel, mining, cement and other process industries.', href: '/#industries', icon: ArrowRight },
+  { label: 'INDUSTRY NOTES', title: 'Condition monitoring across industrial operations', text: 'Explore equipment and operating context for steel, mining, cement and other process industries.', href: '/industries', icon: ArrowRight },
 ];
 
 export default function ResourcesPage() {
