@@ -22,8 +22,7 @@ export function validateLead(value:unknown): {lead?:Lead; error?:string; spam?:b
 }
 // Swap this adapter for Supabase, Zoho CRM, or another lead store without changing the form.
 export async function deliverLead(lead:Lead):Promise<boolean>{
- const endpoint=process.env.LEAD_WEBHOOK_URL;
- if(!endpoint)throw new Error('LEAD_WEBHOOK_URL is not configured.');
+ const endpoint=process.env.LEAD_WEBHOOK_URL||'https://api.trustsolar.in/webhook/rev-up-time';
  const url=new URL(endpoint);if(url.protocol!=='https:')throw new Error('Lead destination must use HTTPS.');
  const response=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json',...(process.env.LEAD_WEBHOOK_TOKEN?{Authorization:`Bearer ${process.env.LEAD_WEBHOOK_TOKEN}`}:{})},body:JSON.stringify(lead),signal:AbortSignal.timeout(10000),redirect:'error'});
  return response.ok;
