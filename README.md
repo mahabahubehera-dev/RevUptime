@@ -17,7 +17,7 @@ Import the repository into Vercel, select the Next.js preset, and deploy from th
 
 ## Pilot enquiries
 
-Copy `.env.example` to `.env.local` and set `LEAD_WEBHOOK_URL` to an HTTPS lead receiver. Optionally set `LEAD_WEBHOOK_TOKEN`. The route validates payloads on the server and passes a normalised JSON lead to the receiver. A 2xx response means the receiver accepted the enquiry; only then does the site display success. Without a configured receiver it returns 503, keeps the form populated and offers a local download. It never fabricates successful delivery or writes personal details to logs.
+The contact and whitepaper forms send validated, normalised JSON leads server-side to the configured `LEAD_WEBHOOK_URL` (`https://api.trustsolar.in/webhook/paprican` in `.env.example`). Set the destination in `.env.local` or the hosting provider's environment settings. Optionally set `LEAD_WEBHOOK_TOKEN` for a receiver that requires bearer authentication. A 2xx response means the receiver accepted the enquiry; only then does the site display success. Delivery errors are logged without personal details, and the site never fabricates successful delivery.
 
 `lib/leads.ts` isolates delivery for later Supabase/Zoho integration. Add persistent rate limiting, receiver-side deduplication and spam protection appropriate to the selected production service before a public launch. No CRM, Supabase, customer authentication or email service is connected. `/sign-in` explains pilot workspace access and does not request credentials.
 
@@ -29,6 +29,7 @@ Dashboard, Copilot and mobile views use explicitly labelled illustrative data. F
 
 - Supplied logo: `public/images/revuptime-brand.png`, displayed through a CSS crop without altering the original.
 - Supplied predictive-intelligence artwork: `public/images/revuptime-predictive-intelligence.png`, used as the homepage hero visual. Because the artwork contains sample percentage outcomes, the page labels it as an illustrative concept rather than verified customer results.
+- The homepage machine-monitoring section automatically cycles through sensor installation and measurement images from `public/images/revuptime-condition-sensor.png`, `public/images/revuptime-installed-sensor.png` and `public/images/revuptime-sensor-metrics.png`. The separate “How RevUptime Works” section shows the seven-step workflow graphic at `public/images/revuptime-condition-monitoring-workflow.png` alongside all seven step descriptions.
 - Original website composition and diagrams, based on the supplied brand brief.
 - Industrial photograph by [Ant Rozetsky on Unsplash](https://unsplash.com/photos/interior-of-large-industrial-factory-SLIFI67jv5k), used under the [Unsplash License](https://unsplash.com/license). It is representative industrial photography, not a claimed RevUptime customer site or Odisha location.
 - Marketing copy and page data live in `data/`, reusable views in `components/`.
@@ -37,4 +38,6 @@ Dashboard, Copilot and mobile views use explicitly labelled illustrative data. F
 
 ## Routes
 
-`/`, `/product`, `/solutions/predictive-maintenance`, `/industries/steel`, `/industries/mining`, `/industries/manufacturing`, `/pilot`, `/about`, `/contact`, `/privacy`, `/terms`, `/sign-in`, plus a custom 404, sitemap and robots.txt.
+`/`, `/product`, `/solutions`, `/solutions/predictive-maintenance`, `/resources`, `/industries/steel`, `/industries/mining`, `/industries/manufacturing`, `/industries/cement`, `/industries/chemicals-fertilizer`, `/industries/pulp-paper`, `/industries/tires`, `/industries/food-beverage`, `/industries/pharma`, `/pilot`, `/about`, `/contact`, `/privacy`, `/terms`, `/sign-in`, plus a custom 404, sitemap and robots.txt.
+
+The Resources page includes a downloadable industrial reliability guide. The guide form uses the same HTTPS `LEAD_WEBHOOK_URL` receiver as pilot enquiries and enables the download only after the receiver accepts the lead.
