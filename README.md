@@ -17,7 +17,7 @@ Import the repository into Vercel, select the Next.js preset, and deploy from th
 
 ## Pilot enquiries
 
-The contact and whitepaper forms send validated, normalised JSON leads server-side to the configured `LEAD_WEBHOOK_URL` (`https://api.trustsolar.in/webhook/paprican` in `.env.example`). Set the destination in `.env.local` or the hosting provider's environment settings. Optionally set `LEAD_WEBHOOK_TOKEN` for a receiver that requires bearer authentication. A 2xx response means the receiver accepted the enquiry; only then does the site display success. Delivery errors are logged without personal details, and the site never fabricates successful delivery.
+The contact and whitepaper forms send validated, normalised JSON leads server-side to the configured `LEAD_WEBHOOK_URL` (`https://api.trustsolar.in/webhook/rev-up-time` in `.env.example`). Set the destination in `.env.local` or the hosting provider's environment settings. Optionally set `LEAD_WEBHOOK_TOKEN` for a receiver that requires bearer authentication. A 2xx response means the receiver accepted the enquiry; only then does the site display success. Delivery errors are logged without personal details, and the site never fabricates successful delivery.
 
 `lib/leads.ts` isolates delivery for later Supabase/Zoho integration. Add persistent rate limiting, receiver-side deduplication and spam protection appropriate to the selected production service before a public launch. No CRM, Supabase, customer authentication or email service is connected. `/sign-in` explains pilot workspace access and does not request credentials.
 
