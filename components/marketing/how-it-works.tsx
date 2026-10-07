@@ -28,7 +28,7 @@ const stages = [
   {
     number: '05',
     name: 'Machine Operator',
-    description: 'The operator reviews the alert and machine-health context, then takes the appropriate initial action.',
+    description: 'After reviewing the alert and machine-health context, the operator creates a work order.',
   },
   {
     number: '06',
