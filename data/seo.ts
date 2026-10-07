@@ -1,0 +1,46 @@
+// Meta titles and descriptions for every route. Keep titles ≤ 60 characters including the
+// ' | RevUptime' suffix (added by the root layout template) and descriptions ≤ 160 characters.
+export type PageSeo = { title: string; description: string; absoluteTitle?: boolean };
+
+export const seo = {
+  '/': { title: 'AI Predictive Maintenance Software in India | RevUptime', description: 'AI predictive maintenance and condition monitoring for steel, mining, cement and process plants in Odisha and India. Start with a 90-day, 5-machine pilot.', absoluteTitle: true },
+  '/product': { title: 'AI Condition Monitoring Platform for Plants', description: 'Vibration and temperature monitoring with machine baselines, AI Reliability Copilot and mobile alerts that help maintenance teams act before failures.' },
+  '/solutions': { title: 'Predictive Maintenance Solutions by Asset Risk', description: 'Match monitoring to machine risk. Start with critical motors, pumps, fans and gearboxes, then scale sensor coverage and AI-prioritised maintenance.' },
+  '/solutions/predictive-maintenance': { title: 'Predictive Maintenance Solutions for Industry', description: 'Predictive maintenance for motors, pumps, gearboxes, fans, conveyors and crushers, with condition trends, machine baselines and prioritised alerts.' },
+  '/platform': { title: 'AI Machine Health Monitoring Platform', description: 'Monitor critical assets, detect abnormal machine behaviour and prioritise maintenance work with RevUptime’s AI-driven machine health platform.' },
+  '/ai-intelligence': { title: 'AI Anomaly Detection for Industrial Machines', description: 'RevUptime AI turns vibration and temperature data into machine baselines, anomaly detection and explainable guidance for industrial maintenance teams.' },
+  '/roi-calculator': { title: 'Downtime Cost & Predictive Maintenance ROI', description: 'Estimate your plant’s annual unplanned downtime cost and the savings predictive maintenance can unlock. Free ROI calculator for Indian industry.' },
+  '/resources': { title: 'Predictive Maintenance Guides & Resources', description: 'Practical guides on condition monitoring, vibration baselines and turning machine alerts into maintenance decisions for industrial plants in India.' },
+  '/industries': { title: 'Predictive Maintenance by Industry in India', description: 'Predictive maintenance for steel, sponge iron, mining, cement, power, ports, chemical, paper, tire, food and pharma plants. See how RevUptime fits yours.' },
+  '/industries/steel': { title: 'Predictive Maintenance for Steel Plants', description: 'Monitor ID fans, kiln drives, rolling-mill auxiliaries and pumps in steel plants with AI vibration and temperature monitoring. Start a 90-day pilot.' },
+  '/industries/sponge-iron': { title: 'Sponge Iron Plant Predictive Maintenance', description: 'AI condition monitoring for kiln drives, cooler and ID fans, conveyors and pumps in sponge iron (DRI) and ferroalloy plants across Odisha and India.' },
+  '/industries/mining': { title: 'Predictive Maintenance for Mining Operations', description: 'Condition monitoring for crushers, conveyors, gearboxes and dewatering pumps in mining and mineral processing. Spot faults early and avoid downtime.' },
+  '/industries/cement': { title: 'Predictive Maintenance for Cement Plants', description: 'AI condition monitoring for kiln and cooler drives, mill gearboxes, ID fans and conveyors in cement plants. Prioritise inspections and avoid stoppages.' },
+  '/industries/power': { title: 'Predictive Maintenance for Power Plants', description: 'Condition monitoring for boiler feed pumps, ID/FD/PA fans, cooling-water pumps and coal-handling drives in captive and utility power plants in India.' },
+  '/industries/ports': { title: 'Port & Conveyor Predictive Maintenance', description: 'Condition monitoring for conveyor drives, gearboxes, stacker-reclaimers and ship-loaders at ports and bulk handling terminals. Keep material moving.' },
+  '/industries/manufacturing': { title: 'Predictive Maintenance for Manufacturing', description: 'Practical AI predictive maintenance for process manufacturing plants: monitor motors, pumps, fans, gearboxes and conveyors and prioritise daily work.' },
+  '/industries/chemicals-fertilizer': { title: 'Chemical Plant Predictive Maintenance', description: 'Condition monitoring for process pumps, compressors, agitators, fans and utility motors in chemical and fertilizer plants. Investigate changes early.' },
+  '/industries/pulp-paper': { title: 'Predictive Maintenance for Pulp & Paper Mills', description: 'Condition monitoring for stock pumps, fans, refiners, dryer-section and conveyor drives in pulp and paper mills. Catch machine changes before failure.' },
+  '/industries/tires': { title: 'Predictive Maintenance for Tire Manufacturing', description: 'Condition monitoring for Banbury mixers, mills, extruders, conveyors and utility equipment in tire plants. Protect output through demanding cycles.' },
+  '/industries/food-beverage': { title: 'Food & Beverage Plant Predictive Maintenance', description: 'Condition monitoring for pumps, refrigeration compressors, conveyors and packaging drives in food and beverage plants. Plan work around production.' },
+  '/industries/pharma': { title: 'Pharma Plant Predictive Maintenance', description: 'Condition monitoring for HVAC fans, chilled-water pumps, compressed air and process equipment in pharmaceutical plants, aligned with site controls.' },
+  '/pilot': { title: '90-Day Predictive Maintenance Pilot (5 Machines)', description: 'Test predictive maintenance on five critical machines for 90 days: sensors installed, baselines set and findings reviewed with your maintenance team.' },
+  '/about': { title: 'About Us: AI Maintenance Built in Odisha', description: 'RevUptime by Revapex AI Private Limited, Bhubaneswar, builds practical AI condition monitoring for steel, mining and process plants in Odisha and India.' },
+  '/contact': { title: 'Contact Us: Book a Predictive Maintenance Pilot', description: 'Talk to RevUptime about a 90-day predictive maintenance pilot for your plant. Based in Bhubaneswar, serving Odisha, Eastern India and plants across India.' },
+  '/privacy': { title: 'Privacy Policy', description: 'How Revapex AI Private Limited collects, uses and protects information submitted through RevUptime website enquiry and pilot request forms.' },
+  '/terms': { title: 'Website Terms of Use', description: 'Terms of use for the RevUptime website, covering illustrative product previews, AI guidance, pilot enquiries and the limits of website content.' },
+  '/sign-in': { title: 'Customer Workspace Sign In', description: 'Customer workspace access for RevUptime pilot and deployment customers. Workspaces are provisioned during onboarding by your RevUptime contact.' },
+  '/predictive-maintenance': { title: 'AI Fault Detection Examples (Demo)', description: 'Illustrative examples of how RevUptime flags bearing degradation, alignment drift and seal wear from vibration, temperature and current trends.' },
+  '/technology': { title: 'Explainable AI for Machine Health (Demo)', description: 'See how RevUptime shows the evidence behind each AI machine-health assessment, so maintenance teams know what changed and why. Illustrative demo.' },
+  '/ai-copilot': { title: 'AI Reliability Copilot (Demo)', description: 'Interactive demo of the RevUptime AI Reliability Copilot answering machine-health questions with illustrative plant data, baselines and suggested checks.' },
+  '/ai-prescriptions': { title: 'AI Maintenance Prescriptions (Demo)', description: 'Illustrative AI maintenance prescriptions that link a machine’s likely fault to a recommended action, severity and target date in RevUptime.' },
+  '/equipment': { title: 'Monitored Equipment Library (Demo)', description: 'Illustrative library of industrial motors, pumps, fans, gearboxes, conveyors and crushers monitored with RevUptime AI condition intelligence.' },
+  '/plant': { title: 'Plant Machine Health Overview (Demo)', description: 'Illustrative plant-wide view of machine health in RevUptime, showing healthy assets, watch items and critical alerts across production areas.' },
+  '/work-orders': { title: 'Alert to Work Order Workflow (Demo)', description: 'Illustrative RevUptime workflow from AI alert and analysis to recommendation, maintenance work order and validated outcome on the plant floor.' },
+  '/platform/anomalies': { title: 'AI Anomaly Detection Feed (Demo)', description: 'Illustrative AI anomaly detection feed in RevUptime showing likely faults, evidence and recommended actions for monitored industrial machines.' },
+  '/platform/assets': { title: 'Machine Health Asset List (Demo)', description: 'Illustrative list of monitored assets in RevUptime with machine health scores, vibration and temperature readings and current condition status.' },
+} satisfies Record<string, PageSeo>;
+
+export type SeoPath = keyof typeof seo;
+
+export const assetDemoSeo = (name: string): PageSeo => ({ title: `${name} Machine Health (Demo)`, description: `Illustrative machine health detail in RevUptime: live condition readings, baseline comparison, trend history and AI guidance for ${name}.` });

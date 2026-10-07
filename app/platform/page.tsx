@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { Activity, AlertTriangle, ArrowUpRight, Gauge, ShieldCheck, Sparkles } from 'lucide-react';
 import { machineAssets } from '@/data/revuptime-demo';
 import { PageHero, StatusBadge } from '@/components/marketing/industrial-ai';
-import { pageMetadata } from '@/lib/seo';
-export const metadata = pageMetadata({ title: 'AI Machine Health Platform — From Signal to Action', description: "Monitor critical assets, detect abnormal machine behaviour and prioritise maintenance with RevUptime's AI condition-monitoring platform.", path: '/platform' });
+import { seoMetadata } from '@/lib/seo';
+export const metadata = seoMetadata('/platform');
 
 const metrics = [
   { label: 'Machines Monitored', value: '48', hint: 'Across demo plant' },

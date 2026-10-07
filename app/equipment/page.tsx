@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { equipmentLibrary } from '@/data/revuptime-demo';
-import { pageMetadata } from '@/lib/seo';
-export const metadata = pageMetadata({ title: 'Monitored Equipment Library Demo', description: 'Illustrative library of industrial equipment monitored with RevUptime condition intelligence.', path: '/equipment', noindex: true });
+import { seoMetadata } from '@/lib/seo';
+export const metadata = seoMetadata('/equipment', { noindex: true });
 
 export default function EquipmentPage() {
   return (

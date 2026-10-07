@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { AlertTriangle, ArrowUpRight, ShieldCheck } from 'lucide-react';
 import { anomalyFeed } from '@/data/revuptime-demo';
-import { pageMetadata } from '@/lib/seo';
-export const metadata = pageMetadata({ title: 'AI Anomaly Detection Demo', description: 'Illustrative AI anomaly detection feed in the RevUptime platform.', path: '/platform/anomalies', noindex: true });
+import { seoMetadata } from '@/lib/seo';
+export const metadata = seoMetadata('/platform/anomalies', { noindex: true });
 
 export default function AnomaliesPage() {
   return (

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Activity, ArrowRight, BrainCircuit, Layers3, ShieldAlert, Workflow } from 'lucide-react';
-import { pageMetadata } from '@/lib/seo';
-export const metadata = pageMetadata({ title: 'Predictive Maintenance Solutions by Machine Risk', description: 'Match monitoring depth to machine risk: start with critical motors, pumps, fans and gearboxes, extend sensor coverage and prioritise maintenance with AI.', path: '/solutions' });
+import { seoMetadata } from '@/lib/seo';
+export const metadata = seoMetadata('/solutions');
 
 const tiers = [
   { icon: BrainCircuit, level: '01 · AI SHIELDS', title: 'Equipment-specific AI', description: 'Apply equipment-specific analysis to critical assets where an unexpected stop carries the greatest operational risk.', includes: ['Kilns, mills, cranes, furnaces, fillers and run-out tables', 'Dynamic FMEA to structure fault analysis', '24×7 human expert review'] },

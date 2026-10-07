@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { pageMetadata } from '@/lib/seo';
+import { seoMetadata } from '@/lib/seo';
 import { IndustriesSection, FinalCTA } from '@/components/marketing/sections';
 
-export const metadata = pageMetadata({ title: 'Predictive Maintenance by Industry', description: 'Condition monitoring and predictive maintenance for steel, sponge iron, mining, cement, power, ports, chemicals, paper, tire, food and pharma plants in India.', path: '/industries' });
+export const metadata = seoMetadata('/industries');
 
 export default function IndustriesPage() {
   return <main id="main">

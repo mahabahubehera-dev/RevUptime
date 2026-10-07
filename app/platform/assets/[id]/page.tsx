@@ -4,11 +4,12 @@ import { Activity, ArrowLeft, Gauge, ShieldCheck, Sparkles, Thermometer, Trendin
 import { machineAssets } from '@/data/revuptime-demo';
 import { StatusBadge } from '@/components/marketing/industrial-ai';
 import { pageMetadata } from '@/lib/seo';
+import { assetDemoSeo } from '@/data/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const asset = machineAssets.find((entry) => entry.id === id);
-  return pageMetadata({ title: asset ? `${asset.name} Machine Health Demo` : 'Machine Health Demo', description: 'Illustrative machine health detail in the RevUptime platform.', path: `/platform/assets/${id}`, noindex: true });
+  return pageMetadata({ ...assetDemoSeo(asset?.name ?? 'Machine'), path: `/platform/assets/${id}`, noindex: true });
 }
 
 export default async function MachineDetailPage({ params }: { params: Promise<{ id: string }> }) {

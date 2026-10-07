@@ -2,17 +2,18 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Navbar, Footer } from '@/components/marketing/layout';
 import { JsonLd } from '@/components/seo/json-ld';
+import { seo } from '@/data/seo';
 import { SITE_URL, SITE_NAME, OG_IMAGE, ORG_ID } from '@/lib/seo';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: 'Predictive Maintenance & Condition Monitoring in India | RevUptime', template: '%s | RevUptime' },
-  description: 'RevUptime provides AI predictive maintenance and condition monitoring for steel, mining, cement and process plants across Odisha and India, with sensors, gateway and explainable AI.',
+  title: { default: seo['/'].title, template: '%s | RevUptime' },
+  description: seo['/'].description,
   applicationName: SITE_NAME,
-  openGraph: { type: 'website', siteName: SITE_NAME, title: 'RevUptime — AI That Understands Machines Before They Fail.', description: 'Turn machine data into predictive maintenance decisions with explainable AI for industrial teams.', locale: 'en_IN', url: '/', images: [OG_IMAGE] },
-  twitter: { card: 'summary_large_image', title: 'RevUptime — AI That Understands Machines Before They Fail.', description: 'AI-powered predictive maintenance and machine health intelligence for industrial operations.', images: [OG_IMAGE.url] },
+  openGraph: { type: 'website', siteName: SITE_NAME, title: seo['/'].title, description: seo['/'].description, locale: 'en_IN', url: '/', images: [OG_IMAGE] },
+  twitter: { card: 'summary_large_image', title: seo['/'].title, description: seo['/'].description, images: [OG_IMAGE.url] },
   icons: { icon: '/icons/favicon.svg' },
 };
 const siteJsonLd = [

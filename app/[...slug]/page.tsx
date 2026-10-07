@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { JsonLd } from '@/components/seo/json-ld';
-import { pageMetadata, breadcrumbJsonLd, faqJsonLd, serviceJsonLd, SITE_URL, ORG_ID } from '@/lib/seo';
+import { seo, type SeoPath, type PageSeo } from '@/data/seo';
+import { seoMetadata, breadcrumbJsonLd, faqJsonLd, serviceJsonLd, SITE_URL, ORG_ID } from '@/lib/seo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Check, MapPin, ShieldCheck, PhoneCall, Cog, LockKeyhole } from 'lucide-react';
@@ -14,22 +15,14 @@ import { FAQSection } from '@/components/marketing/faq-section';
 
 const routes=['product','solutions/predictive-maintenance','industries/steel','industries/mining','industries/manufacturing','industries/cement','industries/chemicals-fertilizer','industries/pulp-paper','industries/tires','industries/food-beverage','industries/pharma','industries/sponge-iron','industries/power','industries/ports','pilot','about','contact','privacy','terms','sign-in'];
 export function generateStaticParams(){return routes.map(route=>({slug:route.split('/')}));}
-const pageMeta:Record<string,{title:string;description:string;crumb:string}>={
- product:{title:'AI Condition Monitoring & Reliability Platform',crumb:'Product',description:'Continuous vibration and temperature monitoring, machine-specific baselines, an AI Reliability Copilot and mobile alerts for industrial maintenance teams.'},
- 'solutions/predictive-maintenance':{title:'Predictive Maintenance Solutions for Indian Industry',crumb:'Predictive Maintenance',description:'Predictive maintenance for motors, pumps, gearboxes, fans, conveyors and crushers: continuous condition trends, baselines and prioritised alerts for Indian plants.'},
- pilot:{title:'90-Day Predictive Maintenance Pilot (5 Machines)',crumb:'Pilot Program',description:'Evaluate RevUptime on five critical machines for 90 days: sensors installed, baselines established and findings reviewed with your maintenance team.'},
- about:{title:'About Us — Revapex AI, Bhubaneswar, Odisha',crumb:'About',description:'RevUptime is a product of Revapex AI Private Limited, Bhubaneswar, building practical AI condition monitoring for the steel, mining and process plants of Odisha and India.'},
- contact:{title:'Contact Us — Book a Predictive Maintenance Pilot',crumb:'Contact',description:'Talk to RevUptime about a 90-day predictive maintenance pilot for your plant. Based in Bhubaneswar, serving Odisha and Eastern India.'},
- privacy:{title:'Privacy Policy',crumb:'Privacy Policy',description:'How Revapex AI Private Limited handles information submitted through the RevUptime website enquiry forms.'},
- terms:{title:'Website Terms',crumb:'Website Terms',description:'Terms of use for the RevUptime website, including illustrative product previews and pilot enquiries.'},
- 'sign-in':{title:'Customer Access',crumb:'Customer Access',description:'Customer workspace access for RevUptime pilot and deployment customers.'},
-};
-export async function generateMetadata({params}:{params:Promise<{slug:string[]}>}):Promise<Metadata>{const {slug}=await params;const path=slug.join('/');const industry=slug[0]==='industries'?industryPages[slug[1] as keyof typeof industryPages]:null;if(industry)return pageMetadata({title:`Predictive Maintenance for ${industry.title}`,description:industry.description,path:`/${path}`});const m=pageMeta[path];if(!m)return {title:'Page not found',robots:{index:false}};return pageMetadata({title:m.title,description:m.description,path:`/${path}`,noindex:path==='sign-in'});}
+const crumbNames:Record<string,string>={product:'Product','solutions/predictive-maintenance':'Predictive Maintenance',pilot:'Pilot Program',about:'About',contact:'Contact',privacy:'Privacy Policy',terms:'Website Terms','sign-in':'Customer Access'};
+const seoFor=(path:string)=>(seo as Record<string,PageSeo>)[`/${path}`];
+export async function generateMetadata({params}:{params:Promise<{slug:string[]}>}):Promise<Metadata>{const {slug}=await params;const path=slug.join('/');if(!routes.includes(path)||!seoFor(path))return {title:'Page not found',robots:{index:false}};return seoMetadata(`/${path}` as SeoPath,{noindex:path==='sign-in'});}
 function structuredData(path:string,slug:string[]):object[]{
  const industry=slug[0]==='industries'?industryPages[slug[1] as keyof typeof industryPages]:null;
  if(industry)return [breadcrumbJsonLd([{name:'Industries',path:'/industries'},{name:industry.title,path:`/${path}`}]),serviceJsonLd({name:`Predictive maintenance for ${industry.title}`,description:industry.description,path:`/${path}`,serviceType:'Predictive maintenance and condition monitoring'})];
- const m=pageMeta[path];if(!m)return [];
- const crumbs=path==='solutions/predictive-maintenance'?[{name:'Solutions',path:'/solutions'},{name:m.crumb,path:`/${path}`}]:[{name:m.crumb,path:`/${path}`}];
+ const m=seoFor(path);const crumb=crumbNames[path];if(!m||!crumb)return [];
+ const crumbs=path==='solutions/predictive-maintenance'?[{name:'Solutions',path:'/solutions'},{name:crumb,path:`/${path}`}]:[{name:crumb,path:`/${path}`}];
  const data:object[]=[breadcrumbJsonLd(crumbs)];
  if(path==='product')data.push({'@context':'https://schema.org','@type':'SoftwareApplication',name:'RevUptime',applicationCategory:'BusinessApplication',applicationSubCategory:'Predictive maintenance and condition monitoring',operatingSystem:'Web, Android, iOS',url:`${SITE_URL}/product`,description:m.description,featureList:['Vibration and temperature condition monitoring','Machine-specific baselines','Prioritised alerts','AI Reliability Copilot','Explainable AI evidence','Mobile access','Maintenance history'],publisher:{'@id':ORG_ID}});
  if(path==='solutions/predictive-maintenance')data.push(serviceJsonLd({name:m.title,description:m.description,path:`/${path}`,serviceType:'Predictive maintenance'}));

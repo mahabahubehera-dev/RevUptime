@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { Activity, ArrowUpRight, Sparkles } from 'lucide-react';
 import { aiPrescriptions } from '@/data/revuptime-demo';
 import { PageHero } from '@/components/marketing/industrial-ai';
-import { pageMetadata } from '@/lib/seo';
-export const metadata = pageMetadata({ title: 'AI Maintenance Prescriptions Demo', description: 'Illustrative AI maintenance prescriptions linking machine faults to recommended actions.', path: '/ai-prescriptions', noindex: true });
+import { seoMetadata } from '@/lib/seo';
+export const metadata = seoMetadata('/ai-prescriptions', { noindex: true });
 
 export default function AIPrescriptionsPage() {
   return (
