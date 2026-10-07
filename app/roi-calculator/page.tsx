@@ -37,7 +37,7 @@ export default function ROICalculatorPage() {
         <div className="container">
           <Link className="breadcrumb" href="/">RevUptime <span>/</span> ROI Calculator</Link>
           <span className="section-eyebrow">PLANT DOWNTIME ROI CALCULATOR</span>
-          <h1>Estimate the cost of downtime.<br/><em>See the recovery opportunity.</em></h1>
+          <h1>Calculate your downtime cost.<br/><em>Predictive maintenance ROI.</em></h1>
           <p>Adjust the inputs for your plant to estimate annual downtime exposure and the value of recovering operating hours.</p>
         </div>
       </section>

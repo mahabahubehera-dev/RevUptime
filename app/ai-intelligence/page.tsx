@@ -21,7 +21,7 @@ export default function Page() {
     <main id="main">
       <PageHero
         eyebrow="AI INTELLIGENCE"
-        title="From Sensor Signals to Machine Intelligence."
+        title="From Vibration Signals to AI Machine Intelligence."
         description="RevUptime continuously processes plant sensor data to understand machine health, detect abnormal behaviour and help maintenance teams act quickly and confidently."
         actions={
           <div className="hero-buttons">

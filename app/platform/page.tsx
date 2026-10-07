@@ -21,7 +21,7 @@ export default function PlatformPage() {
     <main id="main">
       <PageHero
         eyebrow="PLATFORM"
-        title="AI machine health, from signal to action."
+        title="AI machine health platform, from signal to action."
         description="Monitor critical assets, interpret abnormal behaviour, and prioritise maintenance activity based on machine health, evidence and risk."
       />
 

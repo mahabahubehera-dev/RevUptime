@@ -9,7 +9,7 @@ export function Hero() {
       <div className="container landing-hero-grid">
         <div className="landing-hero-copy">
           <span className="landing-eyebrow"><i/> PREDICTIVE AI FOR HEAVY MANUFACTURING</span>
-          <h1>RevUptime<br/><em>Predictive Intelligence</em></h1>
+          <h1>RevUptime<br/><em>AI Predictive Maintenance</em></h1>
           <p className="landing-lead">A practical computerised maintenance system for plants that want earlier warning signs, fewer unplanned shutdowns and a clearer maintenance plan.</p>
           <p className="landing-sublead">We provide the full hardware + software stack—sensors, gateway, connectivity and the RevUptime platform—so there is no procurement ambiguity about what is included. The system pairs explainable AI with a practical 90-day pilot to turn plant evidence into maintenance decisions.</p>
           <div className="hero-whatsapp-example" aria-label="Illustrative WhatsApp-style maintenance alert">
