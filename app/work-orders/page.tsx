@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { pageMetadata } from '@/lib/seo';
+export const metadata = pageMetadata({ title: 'Work Order Workflow Demo', description: 'Illustrative workflow from AI alert to validated maintenance work order in RevUptime.', path: '/work-orders', noindex: true });
 
 const workflow = [
   'AI Alert',

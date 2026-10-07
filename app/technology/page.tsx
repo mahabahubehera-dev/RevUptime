@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { Activity, ArrowRight, BrainCircuit, Database, Gauge, Sparkles } from 'lucide-react';
+import { pageMetadata } from '@/lib/seo';
+export const metadata = pageMetadata({ title: 'Explainable Machine Intelligence', description: 'How RevUptime explains the evidence behind each AI machine-health assessment.', path: '/technology', noindex: true });
 
 const steps = [
   'Sensor Data',

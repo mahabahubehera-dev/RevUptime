@@ -1,0 +1,45 @@
+# RevUptime
+
+> RevUptime is an AI predictive-maintenance and condition-monitoring platform by Revapex AI Private Limited, Bhubaneswar, Odisha, India. It provides the full hardware and software stack — vibration and temperature sensors, a gateway, connectivity and the RevUptime platform — with machine-specific baselines and explainable AI for steel, mining, cement, sponge iron, power and process plants in India.
+
+Key facts:
+- What it does: continuously monitors rotating equipment (motors, pumps, fans and blowers, gearboxes, conveyors, crushers), learns each machine's normal vibration and temperature baseline, flags sustained deviations and explains the evidence behind each alert.
+- AI Reliability Copilot: combines live condition data, maintenance history, equipment manuals and SOPs to suggest what to inspect first. It assists trained maintenance personnel and does not replace engineering judgment.
+- How to start: a 90-day pilot on 5 critical machines — scope and baseline (weeks 1–2), investigate the first alerts with the plant team, then review results and decide on a wider rollout.
+- Pricing: pilot pricing is scoped per plant; no public per-machine pricing.
+- Where: based in Bhubaneswar; initially serving Odisha and Eastern India, including Jharsuguda, Angul, Rourkela, Talcher, Paradeep, Kalinga Nagar and Dhenkanal.
+- Note: dashboard figures on the website are illustrative sample data, not live customer data.
+
+## Product and solutions
+- [Product: AI condition monitoring platform](https://revuptime.com/product): dashboard, AI Reliability Copilot, mobile access
+- [Predictive maintenance solutions](https://revuptime.com/solutions/predictive-maintenance): assets covered and how monitoring works
+- [Solution tiers](https://revuptime.com/solutions): matching monitoring depth to machine risk
+- [AI intelligence](https://revuptime.com/ai-intelligence): baselines, anomaly detection and explainable AI
+- [Platform](https://revuptime.com/platform): from machine signal to maintenance action
+- [90-day pilot](https://revuptime.com/pilot): scope, timeline and pilot FAQ
+- [Downtime ROI calculator](https://revuptime.com/roi-calculator)
+
+## Industries
+- [Steel & Metals](https://revuptime.com/industries/steel)
+- [Sponge Iron & Ferroalloys](https://revuptime.com/industries/sponge-iron)
+- [Mining & Minerals](https://revuptime.com/industries/mining)
+- [Cement](https://revuptime.com/industries/cement)
+- [Power & Captive Power](https://revuptime.com/industries/power)
+- [Ports & Material Handling](https://revuptime.com/industries/ports)
+- [Industrial Manufacturing](https://revuptime.com/industries/manufacturing)
+- [Chemicals & Fertilizer](https://revuptime.com/industries/chemicals-fertilizer)
+- [Pulp & Paper](https://revuptime.com/industries/pulp-paper)
+- [Tire Manufacturing](https://revuptime.com/industries/tires)
+- [Food & Beverage](https://revuptime.com/industries/food-beverage)
+- [Pharmaceuticals](https://revuptime.com/industries/pharma)
+
+## Resources
+- [A practical guide to machine condition monitoring](https://revuptime.com/resources/revuptime-industrial-reliability-guide.html)
+- [All resources](https://revuptime.com/resources)
+
+## Company
+- [About RevUptime](https://revuptime.com/about)
+- [Contact / book a pilot](https://revuptime.com/contact)
+
+## Optional
+- [Full text for LLMs](https://revuptime.com/llms-full.txt)

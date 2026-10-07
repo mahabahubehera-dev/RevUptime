@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Activity, ArrowRight, BrainCircuit, Database, Gauge, Radar, Sparkles, TrendingUp } from 'lucide-react';
 import { PageHero } from '@/components/marketing/industrial-ai';
+import { pageMetadata } from '@/lib/seo';
+export const metadata = pageMetadata({ title: 'AI Machine Health Intelligence for Industrial Plants', description: "How RevUptime's AI turns vibration and temperature data into machine-specific baselines, anomaly detection and explainable maintenance guidance for industrial teams.", path: '/ai-intelligence' });
 
 const flow = ['Sensors', 'Data Collection', 'Signal Processing', 'AI Analysis', 'Anomaly Detection', 'Fault Prediction', 'Root Cause', 'Recommendation'];
 

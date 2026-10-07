@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { Activity, AlertTriangle, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 import { predictionCards } from '@/data/revuptime-demo';
 import { PageHero } from '@/components/marketing/industrial-ai';
+import { pageMetadata } from '@/lib/seo';
+export const metadata = pageMetadata({ title: 'AI Fault Detection Examples', description: 'Illustrative examples of how RevUptime flags bearing degradation, alignment drift and seal wear from vibration, temperature and current trends.', path: '/predictive-maintenance', noindex: true });
 
 export default function PredictiveMaintenancePage() {
   return (

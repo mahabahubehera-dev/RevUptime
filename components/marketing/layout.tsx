@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Menu, X, MapPin } from 'lucide-react';
 
-export function Logo() { return <span className="brand-image"><Image src="/images/revuptime-brand.png" alt="RevUpTime" width={1448} height={1086} priority sizes="220px" /></span>; }
+export function Logo() { return <span className="brand-image"><Image src="/images/revuptime-brand.png" alt="RevUptime" width={1448} height={1086} priority sizes="220px" /></span>; }
 const links = [['AI Intelligence', '/ai-intelligence'], ['Platform', '/platform'], ['Product', '/product'], ['Solutions', '/solutions'], ['Industries', '/industries'], ['ROI Calculator', '/roi-calculator'], ['Resources', '/resources'], ['Pilot Program', '/pilot'], ['Company', '/about']];
 export function Navbar() {
  const [open, setOpen] = useState(false); const path = usePathname();

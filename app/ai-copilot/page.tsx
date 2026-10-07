@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { Activity, ArrowRight, Bot, BrainCircuit, Sparkles } from 'lucide-react';
+import { pageMetadata } from '@/lib/seo';
+export const metadata = pageMetadata({ title: 'AI Reliability Copilot Demo', description: 'Interactive demo of the RevUptime AI Reliability Copilot using illustrative plant data.', path: '/ai-copilot', noindex: true });
 
 const suggestions = [
   'Which machines need attention?',

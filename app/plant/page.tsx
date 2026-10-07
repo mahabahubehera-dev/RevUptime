@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Activity, AlertTriangle, Factory, ShieldCheck } from 'lucide-react';
 import { plantAssets } from '@/data/revuptime-demo';
+import { pageMetadata } from '@/lib/seo';
+export const metadata = pageMetadata({ title: 'Plant Overview Demo', description: 'Illustrative plant-wide machine health overview in RevUptime.', path: '/plant', noindex: true });
 
 const statusColor = {
   Healthy: 'good',

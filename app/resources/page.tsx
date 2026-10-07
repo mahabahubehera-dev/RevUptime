@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { ArrowRight, BookOpen, Download, FileText } from 'lucide-react';
 import { WhitepaperLeadForm } from '@/components/marketing/whitepaper-lead-form';
+import { pageMetadata } from '@/lib/seo';
+export const metadata = pageMetadata({ title: 'Predictive Maintenance Guides & Resources', description: 'Practical guides on machine condition monitoring, vibration baselines and turning alerts into maintenance decisions for industrial plants in India.', path: '/resources' });
 
 const reading = [
   { label: 'FIELD GUIDE', title: 'A practical guide to machine condition monitoring', text: 'A concise introduction to choosing assets, establishing baselines and reviewing condition alerts with your maintenance team.', href: '/resources/revuptime-industrial-reliability-guide.html', icon: FileText },

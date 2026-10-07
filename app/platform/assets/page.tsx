@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { ArrowUpRight, Gauge } from 'lucide-react';
 import { machineAssets } from '@/data/revuptime-demo';
 import { StatusBadge } from '@/components/marketing/industrial-ai';
+import { pageMetadata } from '@/lib/seo';
+export const metadata = pageMetadata({ title: 'Machine Health Assets Demo', description: 'Illustrative machine health asset list in the RevUptime platform.', path: '/platform/assets', noindex: true });
 
 export default function MachineListPage() {
   return (
