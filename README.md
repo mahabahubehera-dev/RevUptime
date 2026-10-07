@@ -36,6 +36,13 @@ Dashboard, Copilot and mobile views use explicitly labelled illustrative data. F
 - Privacy and terms describe this implementation; the business should review them against its final operating arrangements before launch.
 - No customer logos, recognition badges, testimonials, performance percentages, or pricing claims have been invented.
 
+## SEO, analytics and AI search
+
+- Page titles and meta descriptions live in `data/seo.ts` (titles ≤ 60 characters including " | RevUptime", descriptions ≤ 160). `lib/seo.ts` builds canonical, Open Graph and Twitter tags and warns at build time if a limit is exceeded.
+- Structured data (Organization, WebSite, FAQPage, Service, SoftwareApplication, BreadcrumbList) is rendered with `components/seo/json-ld.tsx`.
+- `app/sitemap.ts`, `app/robots.ts`, `public/llms.txt` and `app/llms-full.txt/route.ts` describe the site to search engines and AI assistants. Demo screens with illustrative data are `noindex`.
+- Google Tag Manager (`GTM-NTD4TL7J`) is loaded from the root layout `<head>`, with the noscript fallback at the start of `<body>`. Configure analytics tags inside GTM and keep the Privacy Policy in step with them.
+
 ## Routes
 
 `/`, `/product`, `/solutions`, `/solutions/predictive-maintenance`, `/resources`, `/industries/steel`, `/industries/mining`, `/industries/manufacturing`, `/industries/cement`, `/industries/chemicals-fertilizer`, `/industries/pulp-paper`, `/industries/tires`, `/industries/food-beverage`, `/industries/pharma`, `/pilot`, `/about`, `/contact`, `/privacy`, `/terms`, `/sign-in`, plus a custom 404, sitemap and robots.txt.
