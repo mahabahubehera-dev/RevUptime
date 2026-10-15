@@ -1,6 +1,6 @@
 # RevUptime
 
-Next.js App Router, TypeScript, React, Tailwind CSS and Lucide. Designed for Node.js/Vercel deployment.
+Next.js App Router, TypeScript, React, Tailwind CSS and Lucide. Designed for Node.js deployment on Netlify.
 
 ## Run
 
@@ -13,7 +13,7 @@ Production: `npm run build` then `npm start`. Type checking: `npm run typecheck`
 
 ## Deployment
 
-Import the repository into Vercel, select the Next.js preset, and deploy from the repository root. No database is needed for the marketing site. The production domain and canonical metadata are set to `https://revuptime.com`; connect that domain in Vercel after deployment. The site has not been deployed or connected to the domain by this build.
+Connect the GitHub repository to Netlify and use the repository root as the base directory. `netlify.toml` selects Node.js 22 and runs `npm run build`; Netlify's built-in Next.js OpenNext adapter handles App Router pages, route handlers and static assets. Do not set a custom publish directory or install/pin a separate Next.js adapter. Configure `LEAD_WEBHOOK_URL` and, when required, `LEAD_WEBHOOK_TOKEN` in Netlify's environment variables for pilot and guide enquiries. No database is needed for the marketing site. The production domain and canonical metadata are set to `https://revuptime.com`; connect that domain in Netlify after deployment. A successful local production build does not itself publish the site.
 
 ## Pilot enquiries
 
@@ -45,6 +45,6 @@ Dashboard, Copilot and mobile views use explicitly labelled illustrative data. F
 
 ## Routes
 
-`/`, `/product`, `/solutions`, `/solutions/predictive-maintenance`, `/resources`, `/industries/steel`, `/industries/mining`, `/industries/manufacturing`, `/industries/cement`, `/industries/chemicals-fertilizer`, `/industries/pulp-paper`, `/industries/tires`, `/industries/food-beverage`, `/industries/pharma`, `/pilot`, `/about`, `/contact`, `/privacy`, `/terms`, `/sign-in`, plus a custom 404, sitemap and robots.txt.
+`/`, `/product`, `/solutions`, `/solutions/predictive-maintenance`, `/resources`, `/blog/predictive-maintenance-steel-plants-odisha`, `/industries/steel`, `/industries/mining`, `/industries/manufacturing`, `/industries/cement`, `/industries/chemicals-fertilizer`, `/industries/pulp-paper`, `/industries/tires`, `/industries/food-beverage`, `/industries/pharma`, `/pilot`, `/about`, `/contact`, `/privacy`, `/terms`, `/sign-in`, plus a custom 404, sitemap and robots.txt.
 
 The Resources page includes a downloadable industrial reliability guide. The guide form uses the same HTTPS `LEAD_WEBHOOK_URL` receiver as pilot enquiries and enables the download only after the receiver accepts the lead.

@@ -5,6 +5,7 @@ node_modules
 *.tsbuildinfo
 .DS_Store
 .vercel
+.netlify
 test-results
 # Local preview screenshots
 /output/

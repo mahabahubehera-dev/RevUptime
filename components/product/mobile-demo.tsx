@@ -14,7 +14,7 @@ export function MobileAppMockup(){
     <div className="phone-app-head"><Activity size={22}/><strong>RevUptime</strong><button aria-label="View sample alerts" onClick={()=>setTab('Alerts')}><Bell size={17}/></button></div>
     <div className="phone-body">
       {tab==='Health'?<>
-        <div className="phone-eyebrow">DEMO PLANT</div><h3>Good morning, Rakesh.</h3><p>Here’s how your machines are doing.</p>
+        <div className="phone-eyebrow">DEMO PLANT</div><h3>Good morning, Somajit.</h3><p>Here’s how your machines are doing.</p>
         <div className="phone-stats"><div><strong>48</strong><span>Assets</span></div><div><strong>39</strong><span>Healthy</span></div><div><strong>9</strong><span>To review</span></div></div>
         <h4>Needs your attention</h4>
         <button className="phone-alert" onClick={()=>setTab('Machine')}><span className="status watch">High vibration</span><strong>ID Fan Motor M-104</strong><p>4.2 mm/s <span>+100% vs baseline</span></p><span className="phone-alert-link">View machine</span></button>
