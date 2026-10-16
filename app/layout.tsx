@@ -42,5 +42,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${GTM_ID}');`;
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" data-scroll-behavior="smooth" className={inter.variable}><head>{/* Google Tag Manager */}<script dangerouslySetInnerHTML={{ __html: gtmScript }} /></head><body>{/* Google Tag Manager (noscript) */}<noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} /></noscript><a className="skip-link" href="#main">Skip to content</a><Navbar />{children}<Footer /><JsonLd data={siteJsonLd} /></body></html>;
+  return <html lang="en" data-scroll-behavior="smooth" className={inter.variable}><head>
+    <meta name="google-site-verification" content="M69gOIV1spwVedlUbBvRzHe5s5oOAFmeAGW00rM-41A" />
+    {/* Google Tag Manager */}
+    <script dangerouslySetInnerHTML={{ __html: gtmScript }} />
+  </head><body>{/* Google Tag Manager (noscript) */}<noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} /></noscript><a className="skip-link" href="#main">Skip to content</a><Navbar />{children}<Footer /><JsonLd data={siteJsonLd} /></body></html>;
 }
