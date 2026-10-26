@@ -141,7 +141,7 @@ export default function WhatIsPredictiveMaintenancePage() {
         <article className="steel-guide-content">
           <div className="steel-guide-intro">
             <p>Every operations leader knows the sound of a production line going quiet at the wrong moment. A bearing seizes, a motor overheats, a pump fails, and suddenly the day&apos;s schedule is gone. Unplanned downtime is one of the most expensive problems in industrial operations, and most of it is avoidable.</p>
-            <p>Predictive maintenance (PdM) is the approach that makes it avoidable. Instead of waiting for equipment to break or servicing it on a fixed calendar, you use real-time data to detect early signs of failure and act before it happens. This guide explains what predictive maintenance in manufacturing is, how a predictive maintenance system works, what it takes to implement, and how to start without overhauling your entire operation.</p>
+            <p><Link href="/">Predictive maintenance</Link> (PdM) is the approach that makes it avoidable. Instead of waiting for equipment to break or servicing it on a fixed calendar, you use real-time data to detect early signs of failure and act before it happens. This guide explains what <Link href="/blog/predictive-maintenance-steel-plants-odisha">predictive maintenance in manufacturing</Link> is, how a <Link href="/">predictive maintenance system</Link> works, what it takes to implement, and how to start without overhauling your entire operation.</p>
           </div>
 
           <section id="what-is-pdm">
@@ -184,7 +184,7 @@ export default function WhatIsPredictiveMaintenancePage() {
             <h2>Predictive Maintenance for Steel Plants</h2>
             <GuideImage file="pdm-steel-plants.png" alt="Predictive maintenance for steel plants: detect issues early, reduce downtime, extend equipment life, and lower maintenance costs" width={1536} height={1024}/>
             <p>Steel plants are among the strongest candidates for predictive maintenance. Their equipment runs continuously under extreme heat, heavy mechanical load, and constant vibration, and one failure can halt an entire process route. Blast furnace blowers, rolling mill gearboxes, continuous caster rolls, cranes, descaling pumps, and large drive motors all show measurable warning signs before they fail.</p>
-            <p><Link href="/industries/steel">Vibration analysis on mill drives and fans</Link>, thermal imaging on electrical switchgear, and oil condition monitoring on gearboxes are common starting points. Steel production is a tightly linked sequence, so an unplanned stop at one stage quickly ripples to the next, and restarting a furnace or caster is slow and costly. Predictive maintenance lets teams plan repairs around scheduled shutdowns instead of absorbing an unplanned catastrophe.</p>
+            <p>Vibration analysis on mill drives and fans, thermal imaging on electrical systems, and oil condition monitoring on gearboxes are common starting points. Steel production is a tightly linked sequence, so an unplanned stop at one stage quickly ripples to the next, and restarting a furnace or caster is slow and costly. <Link href="/blog/predictive-maintenance-steel-plants-odisha">Predictive maintenance for steel plants</Link> lets teams plan repairs around scheduled shutdowns instead of absorbing an unplanned one.</p>
           </section>
 
           <section id="roadmap">
@@ -200,8 +200,8 @@ export default function WhatIsPredictiveMaintenancePage() {
 
           <section id="ai-role">
             <h2>The Role of AI in Modern Predictive Maintenance</h2>
-            <p>Traditional PdM relied heavily on rigid thresholds and labor-intensive manual analysis. Today, AI changes what is possible for any modern predictive maintenance system. Machine learning models learn the unique operating baseline of each machine, detect subtle patterns human analysis misses, and improve over time as more operational data arrives.</p>
-            <p>The next frontier is moving from passive alerts to active recommendations. <Link href="/ai-intelligence">Agentic AI systems</Link> can assess fault severity, verify spare parts availability in inventory, draft the maintenance work order, and recommend the optimal maintenance window based on plant production schedules.</p>
+            <p>Traditional PdM relied heavily on fixed thresholds and manual analysis. Today, AI changes what is possible for any modern <Link href="/">predictive maintenance system</Link>. Machine learning models can learn the unique behavior of each asset, detect subtle patterns humans would miss, and improve over time as more data arrives.</p>
+            <p>The next step is moving from alerts to action. Agentic AI systems can go beyond flagging a problem: they can assess severity, check parts availability, draft the work order, and propose the best maintenance window based on production schedules. This closes the gap between insight and execution, which is where much of the value is won or lost.</p>
           </section>
 
           <section id="metrics">
@@ -214,7 +214,8 @@ export default function WhatIsPredictiveMaintenancePage() {
           <section id="start-pilot">
             <h2>Start with a Focused Pilot, Not a Total Overhaul</h2>
             <p>Unplanned downtime is not an unavoidable cost of doing business. With the right data, the right focus, and a clear path from alert to action, you can turn equipment failures into planned events and protect the output your customers depend on.</p>
-            <p>The most successful predictive maintenance programs, whether in a steel mill or a general manufacturing plant, start small, target high-cost assets, and scale from proven results. RevUptime provides end-to-end industrial condition monitoring with wireless sensors, gateways, and AI intelligence.</p>
+            <p>The most successful predictive maintenance programs, whether in a <Link href="/blog/predictive-maintenance-steel-plants-odisha">steel plant</Link> or a wider manufacturing facility, start small, target the assets that matter most, and build from proven results. You do not need a massive transformation to begin, just a clear view of your critical equipment and a commitment to acting on what the data tells you.</p>
+            <p>Ready to reduce downtime and keep your operations running with confidence? Talk to the <Link href="/">RevUptime</Link> team to see how predictive maintenance can work for your facility.</p>
             <Link className="button steel-guide-cta" href="/pilot">Explore a 90-day pilot <ArrowRight size={16}/></Link>
           </section>
 
