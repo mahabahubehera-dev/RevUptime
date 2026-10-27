@@ -3,7 +3,7 @@
 export type PageSeo = { title: string; description: string; absoluteTitle?: boolean };
 
 export const seo = {
-  '/': { title: 'AI Predictive Maintenance Software in India | RevUptime', description: 'AI predictive maintenance and condition monitoring for steel, mining, cement and process plants in Odisha and India. Start with a 90-day, 5-machine pilot.', absoluteTitle: true },
+  '/': { title: 'AI Predictive Maintenance & Condition Monitoring | RevUptime', description: 'Predictive maintenance system and condition monitoring system for steel, cement & mining plants. Sensors + AI software. Start a 90-day pilot.', absoluteTitle: true },
   '/product': { title: 'AI Condition Monitoring Platform for Plants', description: 'Vibration and temperature monitoring with machine baselines, AI Reliability Copilot and mobile alerts that help maintenance teams act before failures.' },
   '/solutions': { title: 'Predictive Maintenance Solutions by Asset Risk', description: 'Match monitoring to machine risk. Start with critical motors, pumps, fans and gearboxes, then scale sensor coverage and AI-prioritised maintenance.' },
   '/solutions/predictive-maintenance': { title: 'Predictive Maintenance Solutions for Industry', description: 'Predictive maintenance for motors, pumps, gearboxes, fans, conveyors and crushers, with condition trends, machine baselines and prioritised alerts.' },
