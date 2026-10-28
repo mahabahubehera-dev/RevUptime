@@ -10816,3 +10816,345 @@ td button small,
         grid-template-columns: 1fr
     }
 }
+
+/* ==========================================================================
+   Account Deletion Request Page (/delete-account)
+   Google Play Store Compliance & Data Safety Styling
+   ========================================================================== */
+
+.deletion-page {
+    padding: 56px 0 96px;
+    background: #f8fafc;
+}
+
+.deletion-container {
+    max-width: 860px;
+    width: calc(100% - 48px);
+    margin: 0 auto;
+}
+
+.deletion-app-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: #eef6ff;
+    border: 1px solid #cbe3fc;
+    border-radius: 999px;
+    color: #0b6ecf;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.deletion-app-badge svg {
+    color: #0b6ecf;
+}
+
+.deletion-card {
+    background: #ffffff;
+    border: 1px solid #e1eaf3;
+    border-radius: 10px;
+    padding: 36px 40px;
+    margin-bottom: 28px;
+    box-shadow: 0 1px 3px rgba(15, 30, 58, 0.04);
+}
+
+.deletion-card.primary-action {
+    border-color: #bcd9f8;
+    background: linear-gradient(180deg, #ffffff 0%, #f6faff 100%);
+    box-shadow: 0 4px 20px rgba(11, 110, 207, 0.07);
+}
+
+.deletion-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.deletion-card-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: #eaf4fd;
+    color: #0b6ecf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.deletion-card-icon.danger {
+    background: #fef2f2;
+    color: #d64545;
+}
+
+.deletion-card-icon.shield {
+    background: #ecfdf5;
+    color: #16a36a;
+}
+
+.deletion-card h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 0;
+    letter-spacing: -0.025em;
+}
+
+.deletion-card p {
+    color: #556982;
+    font-size: 15.5px;
+    line-height: 1.75;
+    margin: 0 0 18px 0;
+}
+
+.deletion-card p:last-child {
+    margin-bottom: 0;
+}
+
+.deletion-steps {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.deletion-step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 16px;
+    background: #ffffff;
+    border: 1px solid #e7edf4;
+    border-radius: 8px;
+    transition: border-color 0.2s;
+}
+
+.deletion-step-item:hover {
+    border-color: #bcd9f8;
+}
+
+.deletion-step-num {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    background: #eaf4fd;
+    color: #0b6ecf;
+    border: 1.5px solid #bcd9f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 1px;
+}
+
+.deletion-step-content {
+    flex: 1;
+}
+
+.deletion-step-content strong {
+    display: block;
+    font-size: 15.5px;
+    color: var(--navy);
+    margin-bottom: 4px;
+}
+
+.deletion-step-content span {
+    font-size: 14.5px;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.deletion-cta-box {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.deletion-cta-btn {
+    font-size: 15px;
+    padding: 14px 30px;
+    font-weight: 600;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 8px rgba(11, 110, 207, 0.25);
+}
+
+.deletion-cta-note {
+    font-size: 13.5px;
+    color: #718096;
+    margin: 0 !important;
+}
+
+.deletion-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 24px;
+}
+
+.deletion-alert.warning {
+    background: #fff8f0;
+    border: 1px solid #fed7aa;
+    color: #9a3412;
+}
+
+.deletion-alert.info {
+    background: #f0f7ff;
+    border: 1px solid #bfdbfe;
+    color: #1e40af;
+}
+
+.deletion-alert svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.deletion-data-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 24px 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.deletion-data-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    background: #f9fbfd;
+    border: 1px solid #e6edf5;
+    border-radius: 8px;
+}
+
+.deletion-data-icon {
+    color: #d64545;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.deletion-data-text {
+    flex: 1;
+}
+
+.deletion-data-text strong {
+    display: block;
+    color: var(--navy);
+    font-size: 15px;
+    margin-bottom: 2px;
+}
+
+.deletion-data-text p {
+    margin: 0;
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.55;
+}
+
+.deletion-disclaimer {
+    font-size: 13.5px !important;
+    color: #7b8798 !important;
+    border-left: 3px solid #cbd5e1;
+    padding-left: 14px;
+    margin-top: 20px !important;
+    margin-bottom: 0 !important;
+    font-style: italic;
+}
+
+.deletion-support-box {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+    padding: 20px 24px;
+    background: #f0f7ff;
+    border: 1px solid #c7e0fb;
+    border-radius: 8px;
+}
+
+.deletion-support-box svg {
+    color: #0b6ecf;
+    flex-shrink: 0;
+}
+
+.deletion-support-content strong {
+    display: block;
+    color: var(--navy);
+    font-size: 15.5px;
+    margin-bottom: 3px;
+}
+
+.deletion-support-content p {
+    margin: 0 0 6px 0;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.deletion-support-content a.support-email-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--button);
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+.deletion-support-content a.support-email-link:hover {
+    color: #095dac;
+}
+
+@media (max-width: 768px) {
+    .deletion-page {
+        padding: 40px 0 64px;
+    }
+
+    .deletion-container {
+        width: calc(100% - 32px);
+    }
+
+    .deletion-card {
+        padding: 24px 20px;
+        margin-bottom: 20px;
+    }
+
+    .deletion-card h2 {
+        font-size: 20px;
+    }
+
+    .deletion-card p {
+        font-size: 14.5px;
+    }
+
+    .deletion-step-item {
+        padding: 12px 14px;
+        gap: 12px;
+    }
+
+    .deletion-cta-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .deletion-support-box {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 16px;
+    }
+}
