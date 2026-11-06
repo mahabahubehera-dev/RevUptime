@@ -23,8 +23,39 @@ export function Hero() {
             <Link className="button secondary" href="/roi-calculator">Calculate Your ROI <ArrowUpRight size={17}/></Link>
           </div>
         </div>
-        <div className="landing-hero-art">
-          <Image src="/images/revuptime-predictive-intelligence.png" alt="RevUptime predictive intelligence connecting plant signals to maintenance decisions and measurable business outcomes" width={1536} height={1024} priority sizes="(max-width: 767px) 100vw, 58vw" />
+        <div className="landing-hero-art" style={{ position: 'relative' }}>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            disablePictureInPicture
+            disableRemotePlayback
+            controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
+            tabIndex={-1}
+            aria-hidden="true"
+            width={1920}
+            height={1080}
+            style={{ pointerEvents: 'none', userSelect: 'none' }}
+            aria-label="RevUptime multimodal asset health and predictive maintenance visualization"
+          >
+            <source src="/images/hero-telemetry.mp4" type="video/mp4" />
+          </video>
+          {/* Transparent click/hover shield so the browser never displays media controls or context menus */}
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: 10,
+              pointerEvents: 'auto',
+              cursor: 'default',
+              background: 'transparent',
+            }}
+          />
         </div>
       </div>
     </section>

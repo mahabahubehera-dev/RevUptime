@@ -45,27 +45,7 @@ export function AIIntelligenceSection(){
   </div></section>;
 }
 
-export function ExplainableAISection(){
-  const evidence=[
-    {icon:Activity,label:'Vibration',current:'4.2 mm/s',detail:'Baseline: 2.1 mm/s',change:'+100%'},
-    {icon:Thermometer,label:'Temperature',current:'68°C',detail:'Baseline: 59°C',change:'+9°C'},
-    {icon:Timer,label:'Condition Duration',current:'3.4 hours',detail:'Sustained deviation',change:'Active'},
-    {icon:History,label:'Maintenance History',current:'143 days ago',detail:'Previous bearing inspection',change:'Review'},
-  ];
-  return <section className="section explainable-section" id="explainable-ai"><div className="container two-column explainable-layout">
-    <div>
-      <SectionHeading eyebrow="EXPLAINABLE AI" title="Know Why the Machine Is at Risk." description="RevUptime shows the evidence behind each AI-assisted assessment, so maintenance teams can review the condition and decide what to do next."/>
-      <p className="ai-section-line left">Know what changed. Understand why. Act earlier.</p>
-    </div>
-    <div className="evidence-panel">
-      <div className="evidence-head"><div><span>CONDITION EVIDENCE</span><strong>ID Fan Motor M-104</strong></div><span className="status watch">Watch</span></div>
-      <div className="evidence-grid">{evidence.map((item)=><div key={item.label}><item.icon size={17}/><span>{item.label}</span><strong>{item.current}</strong><small>{item.detail}</small><b>{item.change}</b></div>)}</div>
-      <div className="assessment-card"><span><Sparkles size={15}/> REVUPTIME ASSESSMENT</span><p>The combination of increasing vibration and increasing temperature indicates that this machine should be inspected before further deterioration.</p></div>
-      <div className="evidence-links"><Link href="#dashboard">View Sensor Data</Link><Link href="#copilot">View Maintenance History</Link><Link href="/product#copilot">View Relevant SOP</Link></div>
-      <small className="illustrative-label">Illustrative product data</small>
-    </div>
-  </div></section>;
-}
+export { ExplainableAISection } from '@/components/marketing/explainable-ai-section';
 
 export function ConditionTimelineSection(){
   const steps=[
@@ -80,7 +60,53 @@ export function ConditionTimelineSection(){
     <div className="timeline-note"><Activity size={15}/><span>Illustrative condition progression</span><b>Turn machine signals into maintenance decisions.</b></div>
   </div></section>;
 }
-export function MobileSection(){return <section className="section light-section" id="mobile"><div className="container mobile-section"><MobileAppMockup/><div><SectionHeading eyebrow="AI-ASSISTED MAINTENANCE, ANYWHERE" title="Ask RevUptime AI from the plant floor." description="Give operators and maintenance engineers access to machine health, explainable AI insights and inspection priorities wherever the next decision happens."/><div className="mobile-feature-grid">{[[Bell,'Push notifications'],[CircleGauge,'Machine health'],[Activity,'Condition trends'],[Sparkles,'Ask RevUptime AI'],[History,'Maintenance history'],[Smartphone,'Mobile access']].map(([Icon,text])=>{const I=Icon as typeof Bell;return <div key={text as string}><I size={19}/><span>{text as string}</span></div>;})}</div><p className="subtle-note">Know what changed, understand why and create an inspection from the same mobile workflow. WhatsApp can be an optional alert channel.</p><Link className="text-link" href="/contact">See it in your pilot</Link></div></div></section>;}
+export function MobileSection(){
+  return (
+    <section className="section light-section" id="mobile">
+      <div className="container">
+        <SectionHeading
+          eyebrow="FROM REAL-TIME SIGNALS TO INTELLIGENT DECISIONS"
+          title="From Connected Assets to Intelligent Operations."
+          description="Transforming industrial data into actionable insights."
+          center
+        />
+        <div className="mobile-section">
+          <MobileAppMockup />
+          <div className="mobile-video-wrap">
+            <video
+              src="/images/predictive-intelligence.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              disablePictureInPicture
+              disableRemotePlayback
+              controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
+              tabIndex={-1}
+              aria-hidden="true"
+              className="mobile-video"
+            />
+            {/* Transparent click/hover shield so the browser never displays media controls or context menus */}
+            <div
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: 10,
+                pointerEvents: 'auto',
+                cursor: 'default',
+                background: 'transparent',
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 export function AssetSection(){return <section className="section" id="assets"><div className="container"><SectionHeading eyebrow="THE MACHINES THAT MATTER" title="Built around the equipment that keeps production moving." center/><div className="asset-grid asset-photo-grid">{assets.map((a,i)=><Link href={`/solutions/predictive-maintenance#${a.icon}`} className="asset-card asset-photo-card" key={a.name}><div className="asset-photo"><Image src={`/images/equipment/${a.icon}.webp`} alt={a.imageAlt} fill sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"/><span className="asset-photo-label">ASSET / 0{i+1}</span></div><div className="asset-photo-copy"><h3>{a.name}</h3><p>{a.detail}</p><span className="asset-explore">Explore monitoring <ArrowUpRight size={15}/></span></div></Link>)}</div><p className="industry-image-note">Illustrative equipment imagery.</p></div></section>;}
 export function IndustriesSection(){return <section className="section light-section" id="industries"><div className="container"><div className="split-heading"><SectionHeading eyebrow="INDUSTRIAL AT OUR CORE" title="Built for industrial operations."/><p>From steel and mining to the machinery moving material across your plant.</p></div><div className="three-grid industry-grid">{industries.map((item)=><Link href={item.href} className="industry-card industry-photo-card" key={item.name}><div className="industry-card-photo"><Image src={item.image} alt={item.imageAlt} fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw"/></div><div className="industry-card-copy"><span className="micro">{item.tag}</span><h3>{item.name}</h3><p>{item.description}</p><span className="text-link">Explore industry <ArrowUpRight size={15}/></span></div></Link>)}</div><p className="industry-image-note">Illustrative industry imagery.</p></div></section>;}
 export function WhySection(){const items=[{icon:Wrench,title:'Retrofit existing machines',text:'Bring continuous monitoring to the equipment you already rely on.'},{icon:Layers3,title:'Start small. Scale with confidence.',text:'Begin with a focused group of critical machines and expand after reviewing the value.'},{icon:Users,title:'Built for industrial teams',text:'Clear alerts and machine history that make sense on a busy plant floor.'},{icon:MapPin,title:'Local implementation',text:'Focused support for industrial plants across Odisha, including Jharsuguda, Angul, Rourkela, Talcher, Paradeep and Kalinga Nagar.'}];return <section className="section"><div className="container two-column why-section"><SectionHeading eyebrow="PRACTICAL BY DESIGN" title="Predictive maintenance without enterprise complexity." description="An easy-to-implement condition monitoring platform for plants ready to move beyond the traditional computerised maintenance system model."/><div className="why-grid">{items.map(x=><article key={x.title}><x.icon size={23}/><h3>{x.title}</h3><p>{x.text}</p></article>)}</div></div></section>;}

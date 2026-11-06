@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Machine Signals to Informed Maintenance | RevUptime</title>
+    <!-- Inter Tight Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================
+           Base Reset & Global Styles
+           ============================================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #0f172a;
+            background: #ffffff;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .iu-fullwidth-breakout {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .how-plantos-section {
+            background-color: #ffffff;
+            border-bottom: 1px solid #f1f5f9;
+            padding-top: 50px;
+            padding-bottom: 70px;
+        }
+
+        .how-plantos-container {
+            max-width: 80rem;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        /* Eyebrow badge */
+        .eyebrow-container {
+            margin-bottom: 0px !important;
+        }
+
+        .eyebrow {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            line-height: 1.5 !important;
+            font-size: 11.5px !important;
+            font-family: "Inter Tight", sans-serif !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            background: linear-gradient(135deg, #7C3AED 0%, #2563EB 50%, #06B6D4 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent !important;
+            border: 1px solid rgba(124, 58, 237, 0.25) !important;
+            padding: 5px 12px !important;
+            background-color: rgba(124, 58, 237, 0.05) !important;
+            border-radius: 4px !important;
+            vertical-align: middle !important;
+            letter-spacing: 2.2px !important;
+            margin-bottom: 0.85rem;
+        }
+
+        .eyebrow-dot {
+            width: 6px !important;
+            height: 6px !important;
+            flex-shrink: 0 !important;
+            border-radius: 50% !important;
+            background: #7C3AED !important;
+            animation: pulse-glow 2s infinite alternate !important;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.5);
+            }
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 6px rgba(6, 182, 212, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(6, 182, 212, 0);
+            }
+        }
+
+        .sub-eyebrow {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Typography */
+        .section-main-title {
+            font-family: "Inter Tight", sans-serif;
+            font-size: clamp(2rem, 3.8vw, 3.1rem);
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.15;
+            letter-spacing: -0.025em !important;
+        }
+
+        .section-desc {
+            font-size: clamp(1rem, 1.25vw, 1.15rem);
+            color: #475569;
+            margin-top: 0.75rem;
+            max-width: 48rem;
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           Breadcrumb Flow Bar
+           ============================================================ */
+        .flow-nav-bar {
+            margin-top: 2rem;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .flow-nav-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .flow-pills-list {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .flow-pill {
+            font-size: 12.5px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .flow-pill:hover {
+            border-color: #7C3AED;
+            color: #7C3AED;
+            background: rgba(124, 58, 237, 0.04);
+        }
+
+        .flow-pill.active {
+            background: linear-gradient(90deg, #6A3FE0, #2F6BFF);
+            border-color: transparent;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(106, 63, 224, 0.35);
+        }
+
+        .flow-arrow {
+            color: #94a3b8;
+            font-size: 11px;
+            user-select: none;
+        }
+
+        .flow-link-btn {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: #2563EB;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+
+        .flow-link-btn:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        /* ============================================================
+           Interactive 7-Stage Loop Grid
+           ============================================================ */
+        .how-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 52px;
+            align-items: center;
+            margin-top: 36px;
+        }
+
+        .railwrap {
+            position: relative !important;
+            width: 100% !important;
+        }
+
+        .rail {
+            position: absolute !important;
+            left: 13px !important;
+            top: 0 !important;
+            bottom: 0 !important;
+            width: 1px !important;
+            background: #DCDEEB !important;
+            transform: translateX(-50%) !important;
+            overflow: visible !important;
+            z-index: 1 !important;
+            pointer-events: none !important;
+        }
+
+        .thumb {
+            position: absolute !important;
+            left: 50% !important;
+            transform: translate(-50%, 0) !important;
+            width: 64px !important;
+            top: 0 !important;
+            height: 0 !important;
+            pointer-events: none !important;
+            background: radial-gradient(closest-side at 50% 50%, rgba(106, 63, 224, 0.55), rgba(47, 107, 255, 0.32) 55%, rgba(47, 107, 255, 0) 100%) !important;
+            filter: blur(9px) !important;
+            border-radius: 50% !important;
+            z-index: 1 !important;
+            transition: top 0.5s cubic-bezier(0.34, 0.02, 0.2, 1), height 0.5s cubic-bezier(0.34, 0.02, 0.2, 1) !important;
+        }
+
+        .stages {
+            list-style: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+        }
+
+        .srow {
+            display: grid !important;
+            grid-template-columns: 26px 1fr !important;
+            gap: 18px !important;
+            padding: 13px 0 !important;
+            border-top: 1px solid #DCDEEB !important;
+            cursor: pointer !important;
+            align-items: start !important;
+            position: relative !important;
+            box-sizing: border-box !important;
+            transition: background-color 0.2s ease;
+        }
+
+        .srow:hover h3 {
+            color: #6A3FE0;
+        }
+
+        .srow:last-child {
+            border-bottom: 1px solid #DCDEEB !important;
+        }
+
+        .srow .sn {
+            width: 26px !important;
+            height: 26px !important;
+            min-width: 26px !important;
+            max-width: 26px !important;
+            border-radius: 50% !important;
+            background: #ffffff !important;
+            border: 1.5px solid #DCDEEB !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 11px !important;
+            font-weight: 800 !important;
+            color: #4A4E6E !important;
+            margin-top: 2px !important;
+            position: relative !important;
+            z-index: 2 !important;
+            box-sizing: border-box !important;
+            transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important;
+        }
+
+        .srow.on .sn {
+            background: linear-gradient(90deg, #6A3FE0, #2F6BFF) !important;
+            color: #ffffff !important;
+            border-color: transparent !important;
+            box-shadow: 0 6px 16px -6px rgba(70, 60, 220, 0.85) !important;
+        }
+
+        .srow h3 {
+            font-size: 19px;
+            font-weight: 700;
+            margin: 0;
+            transition: color 0.35s ease;
+            letter-spacing: -0.01em;
+            color: #0f172a;
+        }
+
+        .srow.on h3 {
+            background: linear-gradient(90deg, #6A3FE0, #2F6BFF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .srow p {
+            color: #475569;
+            font-size: 13.5px;
+            margin: 3px 0 0;
+            line-height: 1.5;
+            transition: opacity 0.35s ease, max-height 0.45s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .srow.on p {
+            max-height: 120px;
+            opacity: 1;
+        }
+
+        /* SVG 7-Node Loop Visualizer */
+        .loopwrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 716 / 592;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .ring-svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .ring-svg .track {
+            transition: stroke 0.3s;
+        }
+
+        .ring-svg .prog {
+            transition: stroke-dasharray 0.5s ease, stroke 0.4s ease;
+        }
+
+        .node {
+            cursor: pointer;
+        }
+
+        .node circle {
+            transition: fill 0.4s ease, stroke 0.4s ease, filter 0.3s ease;
+            stroke-width: 2;
+            stroke: #DCDEEB;
+        }
+
+        .node text {
+            font-family: "Inter Tight", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            fill: #4A4E6E;
+            text-anchor: middle;
+            transition: fill 0.4s ease;
+        }
+
+        .node.done circle {
+            fill: #6A3FE0;
+            stroke: #6A3FE0;
+        }
+
+        .node.done text {
+            fill: #ffffff;
+        }
+
+        .node.now circle {
+            filter: drop-shadow(0 2px 8px rgba(106, 63, 224, 0.6));
+        }
+
+        .rlabels text {
+            font-family: "Inter Tight", sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            fill: #CBD5E1;
+            letter-spacing: 0.5px;
+            transition: fill 0.3s ease;
+        }
+
+        .rlabels text.active {
+            fill: #6A3FE0;
+        }
+
+        /* Central Display Pane */
+        .centre {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48%;
+            text-align: center;
+        }
+
+        .pane {
+            display: none;
+        }
+
+        .pane.on {
+            display: block;
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .pmain {
+            font-weight: 700;
+            font-size: 15.5px;
+            line-height: 1.3;
+            margin-top: 12px;
+            color: #0f172a;
+        }
+
+        .srcs, .rxform {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+        }
+
+        .srcs span, .rxform span {
+            border: 1px solid #DCDEEB;
+            border-radius: 999px;
+            padding: 3px 9px;
+            font-size: 11.5px;
+            color: #4A4E6E;
+            font-weight: 600;
+            background: #ffffff;
+        }
+
+        .rxform span {
+            border-style: dashed;
+        }
+
+        .pent {
+            margin-top: 10px;
+            font-size: 12.5px;
+            color: #0F8F6E;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .split {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .split .half {
+            border: 1px solid #DCDEEB;
+            border-radius: 8px;
+            padding: 6px 10px;
+            font-size: 12px;
+            color: #0f172a;
+            font-weight: 600;
+            background: #ffffff;
+        }
+
+        .split .vs {
+            font-size: 11px;
+            color: #4A4E6E;
+            font-weight: 600;
+        }
+
+        .actmark {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 22px;
+            background: linear-gradient(90deg, #6A3FE0, #2F6BFF);
+        }
+
+        .actmark.green {
+            background: #16B58A;
+        }
+
+        .kpis {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            font-size: 12.5px;
+            color: #4A4E6E;
+            flex-wrap: wrap;
+        }
+
+        .kpis b {
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        /* ============================================================
+           Step Status & Cycle Controller Bar
+           ============================================================ */
+        .step-controller-card {
+            margin-top: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            border: 1px solid #DCDEEB;
+            border-radius: 14px;
+            padding: 20px 24px;
+            background: #ffffff;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+            flex-wrap: wrap;
+        }
+
+        .step-badge-indicator {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #7C3AED;
+            background: rgba(124, 58, 237, 0.08);
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        .step-current-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+
+        .step-current-desc {
+            font-size: 14px;
+            color: #475569;
+            max-width: 600px;
+            line-height: 1.55;
+        }
+
+        .controller-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .cycle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-family: "Inter Tight", sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid #cbd5e1;
+            background: #ffffff;
+            color: #334155;
+            transition: all 0.2s ease;
+        }
+
+        .cycle-btn:hover {
+            border-color: #7C3AED;
+            color: #7C3AED;
+            background: #f8fafc;
+        }
+
+        .cycle-btn.paused {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.3);
+            color: #d97706;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #7C3AED 0%, #2563EB 50%, #06B6D4 100%);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.25);
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            font-size: 13.5px;
+            font-family: "Inter Tight", sans-serif;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .btn-gradient:hover {
+            box-shadow: 0 6px 25px rgba(124, 58, 237, 0.45);
+            transform: translateY(-1px);
+        }
+
+        .status-hint {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10B981;
+            display: inline-block;
+        }
+
+        .status-dot.paused {
+            background: #f59e0b;
+        }
+
+        /* Disclaimer footer note */
+        .disclaimer-note {
+            margin-top: 24px;
+            padding: 14px 20px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 3px solid #7C3AED;
+            font-size: 12.5px;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .how-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .loopwrap {
+                max-width: 440px;
+            }
+
+            .step-controller-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .how-plantos-section {
+                padding-top: 36px;
+                padding-bottom: 48px;
+            }
+
+            .how-plantos-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .desktop-br {
+                display: none !important;
+            }
+
+            .centre {
+                width: 58%;
+            }
+
+            .pmain {
+                font-size: 13px;
+                margin-top: 6px;
+            }
+
+            .srcs span, .rxform span, .split .half, .kpis {
+                font-size: 10px;
+                padding: 2px 7px;
+            }
+
+            .actmark {
+                width: 38px;
+                height: 38px;
+                font-size: 18px;
+            }
+
+            .rlabels text {
+                font-size: 13px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ring-svg .prog {
+                transition: none;
+            }
+            .pane.on {
+                animation: none;
+            }
+            .thumb {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="iu-fullwidth-breakout">
+        <!-- Section: Seven-Step Maintenance Workflow -->
+        <section class="how-plantos-section" id="how-sec" aria-labelledby="how">
+            <div class="how-plantos-container">
+                <!-- Eyebrow & Title Header -->
+                <div>
+                    <p class="eyebrow-container">
+                        <span class="eyebrow">
+                            <span class="eyebrow-dot"></span>
+                            YOUR SEVEN-STEP MAINTENANCE WORKFLOW
+                        </span>
+                    </p>
+                    <div class="sub-eyebrow">Follow each step, from sensing machine condition to completing and recording maintenance.</div>
+                    <h2 class="section-main-title" id="how">
+                        From machine signals <br class="desktop-br">to informed maintenance.
+                    </h2>
+                    <p class="section-desc">
+                        See how machine readings move through analysis, team response and recorded maintenance.
+                    </p>
+                </div>
+
+                <!-- Breadcrumb Flow Navigation Bar -->
+                <div class="flow-nav-bar">
+                    <div class="flow-nav-title">
+                        <span>FROM MACHINE SIGNALS TO MAINTENANCE ACTION</span>
+                    </div>
+                    <div class="flow-pills-list" id="flow-pills">
+                        <button class="flow-pill active" data-step="0">Sense</button>
+                        <span class="flow-arrow">→</span>
+                        <button class="flow-pill" data-step="1">Connect</button>
+                        <span class="flow-arrow">→</span>
+                        <button class="flow-pill" data-step="2">Analyze</button>
+                        <span class="flow-arrow">→</span>
+                        <button class="flow-pill" data-step="3">Alert</button>
+                        <span class="flow-arrow">→</span>
+                        <button class="flow-pill" data-step="4">Operator</button>
+                        <span class="flow-arrow">→</span>
+                        <button class="flow-pill" data-step="5">Maintenance</button>
+                        <span class="flow-arrow">→</span>
+                        <button class="flow-pill" data-step="6">Close</button>
+                    </div>
+                    <a href="https://revuptime.com/images/revuptime-condition-monitoring-workflow.png" target="_blank" rel="noopener" class="flow-link-btn">
+                        View full diagram
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Interactive 7-Stage Loop Grid -->
+                <div class="how-grid">
+                    <!-- Left: Interactive Vertical Stage Rail (01 to 07) -->
+                    <div class="railwrap">
+                        <div class="rail"><span class="thumb" id="thumb" style="top: 0px; height: 80px;"></span></div>
+                        <ol class="stages" id="stages">
+                            <li class="srow on" data-i="0">
+                                <span class="sn">01</span>
+                                <div>
+                                    <h3>Sense</h3>
+                                    <p>A vibration and temperature sensor captures condition data from the machine while it operates.</p>
+                                </div>
+                            </li>
+                            <li class="srow" data-i="1">
+                                <span class="sn">02</span>
+                                <div>
+                                    <h3>Connect</h3>
+                                    <p>An industrial gateway securely sends sensor readings to the RevUptime platform for review.</p>
+                                </div>
+                            </li>
+                            <li class="srow" data-i="2">
+                                <span class="sn">03</span>
+                                <div>
+                                    <h3>Analyze</h3>
+                                    <p>RevUptime reviews condition readings and trends to highlight changes in machine behaviour for investigation.</p>
+                                </div>
+                            </li>
+                            <li class="srow" data-i="3">
+                                <span class="sn">04</span>
+                                <div>
+                                    <h3>Alert</h3>
+                                    <p>When configured alert conditions are met, the relevant team is notified through the agreed channels.</p>
+                                </div>
+                            </li>
+                            <li class="srow" data-i="4">
+                                <span class="sn">05</span>
+                                <div>
+                                    <h3>Machine Operator</h3>
+                                    <p>After reviewing the alert and machine-health context, the operator creates a work order.</p>
+                                </div>
+                            </li>
+                            <li class="srow" data-i="5">
+                                <span class="sn">06</span>
+                                <div>
+                                    <h3>Maintenance Manager</h3>
+                                    <p>The maintenance manager reviews the details, plans the work and assigns follow-up tasks.</p>
+                                </div>
+                            </li>
+                            <li class="srow" data-i="6">
+                                <span class="sn">07</span>
+                                <div>
+                                    <h3>Close Operations</h3>
+                                    <p>The team records completed maintenance, closes the issue and updates the machine history.</p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <!-- Right: Dynamic SVG 7-Node Loop Visualizer -->
+                    <div class="loopwrap" id="loop" data-stage="0" aria-hidden="true">
+                        <svg class="ring-svg" viewBox="-120 -20 800 600" role="presentation" focusable="false">
+                            <defs>
+                                <linearGradient id="gr" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#6A3FE0"></stop>
+                                    <stop offset="100%" stop-color="#2F6BFF"></stop>
+                                </linearGradient>
+                            </defs>
+
+                            <!-- Circular Progress Track -->
+                            <circle class="track" cx="280" cy="280" r="200" fill="none" stroke="#DCDEEB" stroke-width="2"></circle>
+                            <circle class="prog" cx="280" cy="280" r="200" fill="none" stroke="url(#gr)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0 1257" transform="rotate(-90 280 280)"></circle>
+                            
+                            <!-- 7 Circular Nodes -->
+                            <g class="nodes">
+                                <g class="node done now" data-i="0">
+                                    <circle cx="280" cy="80" r="28" fill="#6A3FE0"></circle>
+                                    <text x="280" y="85">01</text>
+                                </g>
+                                <g class="node" data-i="1">
+                                    <circle cx="436" cy="155" r="28" fill="#ffffff" stroke="#DCDEEB" stroke-width="2"></circle>
+                                    <text x="436" y="160">02</text>
+                                </g>
+                                <g class="node" data-i="2">
+                                    <circle cx="475" cy="325" r="28" fill="#ffffff" stroke="#DCDEEB" stroke-width="2"></circle>
+                                    <text x="475" y="330">03</text>
+                                </g>
+                                <g class="node" data-i="3">
+                                    <circle cx="367" cy="460" r="28" fill="#ffffff" stroke="#DCDEEB" stroke-width="2"></circle>
+                                    <text x="367" y="465">04</text>
+                                </g>
+                                <g class="node" data-i="4">
+                                    <circle cx="193" cy="460" r="28" fill="#ffffff" stroke="#DCDEEB" stroke-width="2"></circle>
+                                    <text x="193" y="465">05</text>
+                                </g>
+                                <g class="node" data-i="5">
+                                    <circle cx="85" cy="325" r="28" fill="#ffffff" stroke="#DCDEEB" stroke-width="2"></circle>
+                                    <text x="85" y="330">06</text>
+                                </g>
+                                <g class="node" data-i="6">
+                                    <circle cx="124" cy="155" r="28" fill="#ffffff" stroke="#DCDEEB" stroke-width="2"></circle>
+                                    <text x="124" y="160">07</text>
+                                </g>
+                            </g>
+
+                            <!-- Radial Labels for 7 Steps -->
+                            <g class="rlabels">
+                                <text x="280" y="30" text-anchor="middle" id="rlabel-0" class="active">SENSE</text>
+                                <text x="480" y="135" text-anchor="start" id="rlabel-1">CONNECT</text>
+                                <text x="520" y="330" text-anchor="start" id="rlabel-2">ANALYZE</text>
+                                <text x="395" y="515" text-anchor="start" id="rlabel-3">ALERT</text>
+                                <text x="165" y="515" text-anchor="end" id="rlabel-4">OPERATOR</text>
+                                <text x="45" y="330" text-anchor="end" id="rlabel-5">MAINTENANCE</text>
+                                <text x="75" y="135" text-anchor="end" id="rlabel-6">CLOSE</text>
+                            </g>
+                        </svg>
+
+                        <!-- Central Active Stage Display for 7 Steps -->
+                        <div class="centre">
+                            <!-- 01 Sense -->
+                            <div class="pane on" data-i="0">
+                                <div class="srcs">
+                                    <span>Vibration</span>
+                                    <span>Temperature</span>
+                                    <span>Continuous</span>
+                                </div>
+                                <p class="pmain">Sensing Machine Condition</p>
+                                <p class="pent">Captures condition data while operating</p>
+                            </div>
+                            <!-- 02 Connect -->
+                            <div class="pane" data-i="1">
+                                <div class="srcs">
+                                    <span>Industrial Gateway</span>
+                                    <span>Secure TLS</span>
+                                    <span>RevUptime Cloud</span>
+                                </div>
+                                <p class="pmain">Secure Gateway Transfer</p>
+                                <p class="pent">Edge readings sent to RevUptime platform</p>
+                            </div>
+                            <!-- 03 Analyze -->
+                            <div class="pane" data-i="2">
+                                <div class="split">
+                                    <span class="half">Condition Trends</span>
+                                    <span class="vs">&amp;</span>
+                                    <span class="half">Behavior Shifts</span>
+                                </div>
+                                <p class="pmain">Platform Review &amp; Analytics</p>
+                                <p class="pent">Highlights changes for investigation</p>
+                            </div>
+                            <!-- 04 Alert -->
+                            <div class="pane" data-i="3">
+                                <div class="rxform">
+                                    <span>Configured Rules</span>
+                                    <span>Threshold Met</span>
+                                    <span>Notification</span>
+                                </div>
+                                <p class="pmain">Team Alert Triggered</p>
+                                <p class="pent">Notified through agreed communication channels</p>
+                            </div>
+                            <!-- 05 Operator -->
+                            <div class="pane" data-i="4">
+                                <div class="rxform">
+                                    <span>Machine Context</span>
+                                    <span>Health Review</span>
+                                    <span>Work Order</span>
+                                </div>
+                                <p class="pmain">Operator Creates Work Order</p>
+                                <p class="pent">Triage with real-time operational context</p>
+                            </div>
+                            <!-- 06 Maintenance Manager -->
+                            <div class="pane" data-i="5">
+                                <div class="split">
+                                    <span class="half">Plan Work</span>
+                                    <span class="vs">&amp;</span>
+                                    <span class="half">Assign Follow-Up</span>
+                                </div>
+                                <p class="pmain">Manager Orchestrates Work</p>
+                                <p class="pent">Assigns tasks &amp; schedules repair window</p>
+                            </div>
+                            <!-- 07 Close -->
+                            <div class="pane" data-i="6">
+                                <div class="actmark green">✓</div>
+                                <p class="pmain">Completed Maintenance Recorded</p>
+                                <p class="pent">Issue closed and machine history logged</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Step Status & Cycle Controller Card -->
+                <div class="step-controller-card">
+                    <div>
+                        <div class="step-badge-indicator" id="step-badge">STEP 01 OF 07</div>
+                        <h4 class="step-current-title" id="step-title">01 · Sense</h4>
+                        <p class="step-current-desc" id="step-desc">
+                            A vibration and temperature sensor captures condition data from the machine while it operates.
+                        </p>
+                        <div class="status-hint">
+                            <span class="status-dot" id="status-dot"></span>
+                            <span id="cycle-status-text">Workflow advances automatically every 3.5 seconds.</span>
+                        </div>
+                    </div>
+
+                    <div class="controller-actions">
+                        <button class="cycle-btn" id="pause-toggle-btn" title="Pause or Resume the automatic loop">
+                            <span id="pause-icon">⏸</span>
+                            <span id="pause-label">Pause Automatic Cycle</span>
+                        </button>
+                        <a href="https://revuptime.com/images/revuptime-condition-monitoring-workflow.png" target="_blank" rel="noopener" class="btn-gradient">
+                            View full diagram
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M7 7h10v10"></path>
+                                <path d="M7 17 17 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Site Agreement Disclaimer Note -->
+                <div class="disclaimer-note">
+                    <strong>Note:</strong> Sensor suitability, alert thresholds, recipients and notification channels are agreed with your site team during setup.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Interactive Scripts for 7-Step Workflow -->
+    <script>
+        (function () {
+            var stepData = [
+                {
+                    num: '01',
+                    label: 'Sense',
+                    desc: 'A vibration and temperature sensor captures condition data from the machine while it operates.'
+                },
+                {
+                    num: '02',
+                    label: 'Connect',
+                    desc: 'An industrial gateway securely sends sensor readings to the RevUptime platform for review.'
+                },
+                {
+                    num: '03',
+                    label: 'Analyze',
+                    desc: 'RevUptime reviews condition readings and trends to highlight changes in machine behaviour for investigation.'
+                },
+                {
+                    num: '04',
+                    label: 'Alert',
+                    desc: 'When configured alert conditions are met, the relevant team is notified through the agreed channels.'
+                },
+                {
+                    num: '05',
+                    label: 'Machine Operator',
+                    desc: 'After reviewing the alert and machine-health context, the operator creates a work order.'
+                },
+                {
+                    num: '06',
+                    label: 'Maintenance Manager',
+                    desc: 'The maintenance manager reviews the details, plans the work and assigns follow-up tasks.'
+                },
+                {
+                    num: '07',
+                    label: 'Close Operations',
+                    desc: 'The team records completed maintenance, closes the issue and updates the machine history.'
+                }
+            ];
+
+            var loop = document.getElementById('loop');
+            var rows = [].slice.call(document.querySelectorAll('.srow'));
+            var pills = [].slice.call(document.querySelectorAll('.flow-pill'));
+            var nodes = [].slice.call(document.querySelectorAll('.node'));
+            var panes = [].slice.call(document.querySelectorAll('.pane'));
+            var prog = loop ? loop.querySelector('.prog') : null;
+            var th = document.getElementById('thumb');
+
+            var badgeEl = document.getElementById('step-badge');
+            var titleEl = document.getElementById('step-title');
+            var descEl = document.getElementById('step-desc');
+            var pauseBtn = document.getElementById('pause-toggle-btn');
+            var pauseIcon = document.getElementById('pause-icon');
+            var pauseLabel = document.getElementById('pause-label');
+            var statusDot = document.getElementById('status-dot');
+            var statusText = document.getElementById('cycle-status-text');
+
+            var N = 7;
+            var C = 2 * Math.PI * 200;
+            var cur = -1;
+            var timer = null;
+            var isPaused = false;
+            var isVisible = true;
+            var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            function setStage(i, manualPause) {
+                if (i === cur) return;
+                var prev = cur;
+                cur = i;
+
+                if (loop) loop.setAttribute('data-stage', i);
+
+                // Update stroke progress around the 7-node ring
+                if (prog) {
+                    if (prev === (N - 1) && i === 0) {
+                        prog.style.transition = 'stroke-dasharray 0.5s ease, stroke 0.4s ease';
+                        prog.style.strokeDasharray = (C * 0.999) + ' ' + C;
+                        setTimeout(function () {
+                            if (cur === 0) {
+                                prog.style.transition = 'none';
+                                prog.style.strokeDasharray = '0 ' + C;
+                                void prog.offsetWidth;
+                                prog.style.transition = 'stroke-dasharray 0.5s ease, stroke 0.4s ease';
+                            }
+                        }, 500);
+                    } else {
+                        prog.style.transition = 'stroke-dasharray 0.5s ease, stroke 0.4s ease';
+                        prog.style.strokeDasharray = ((i / N) * C) + ' ' + C;
+                    }
+                }
+
+                // Update list rows
+                rows.forEach(function (r, k) {
+                    r.classList.toggle('on', k === i);
+                });
+
+                // Update SVG nodes
+                nodes.forEach(function (n, k) {
+                    n.classList.toggle('done', k <= i);
+                    n.classList.toggle('now', k === i);
+                });
+
+                // Update radial text highlight
+                for (var rIdx = 0; rIdx < N; rIdx++) {
+                    var rText = document.getElementById('rlabel-' + rIdx);
+                    if (rText) {
+                        rText.classList.toggle('active', rIdx === i);
+                    }
+                }
+
+                // Update center pane
+                panes.forEach(function (p, k) {
+                    p.classList.toggle('on', k === i);
+                });
+
+                // Update flow pills in breadcrumb
+                pills.forEach(function (pill, k) {
+                    pill.classList.toggle('active', k === i);
+                });
+
+                // Update bottom status card
+                var curStep = stepData[i];
+                if (curStep) {
+                    if (badgeEl) badgeEl.textContent = 'STEP ' + curStep.num + ' OF 07';
+                    if (titleEl) titleEl.textContent = curStep.num + ' · ' + curStep.label;
+                    if (descEl) descEl.textContent = curStep.desc;
+                }
+
+                // Update rail thumb position
+                var row = rows[i];
+                if (row && th) {
+                    th.style.top = row.offsetTop + 'px';
+                    th.style.height = row.offsetHeight + 'px';
+                }
+
+                if (manualPause) {
+                    pauseCycle(true);
+                }
+            }
+
+            function startTimer() {
+                clearInterval(timer);
+                if (!prefersReduced && !isPaused) {
+                    timer = setInterval(function () {
+                        if (isVisible && !isPaused) {
+                            setStage((cur + 1) % N, false);
+                        }
+                    }, 3500);
+                }
+            }
+
+            function pauseCycle(userSelected) {
+                isPaused = true;
+                clearInterval(timer);
+                if (pauseBtn) pauseBtn.classList.add('paused');
+                if (pauseIcon) pauseIcon.textContent = '▶';
+                if (pauseLabel) pauseLabel.textContent = 'Resume Automatic Cycle';
+                if (statusDot) statusDot.classList.add('paused');
+                if (statusText) {
+                    statusText.textContent = userSelected 
+                        ? 'Paused on Step ' + stepData[cur].num + ' (' + stepData[cur].label + '). Click Resume to continue loop.'
+                        : 'Automatic cycle paused.';
+                }
+            }
+
+            function resumeCycle() {
+                isPaused = false;
+                if (pauseBtn) pauseBtn.classList.remove('paused');
+                if (pauseIcon) pauseIcon.textContent = '⏸';
+                if (pauseLabel) pauseLabel.textContent = 'Pause Automatic Cycle';
+                if (statusDot) statusDot.classList.remove('paused');
+                if (statusText) statusText.textContent = 'Workflow advances automatically every 3.5 seconds.';
+                startTimer();
+            }
+
+            // Click listener for pause/resume button
+            if (pauseBtn) {
+                pauseBtn.addEventListener('click', function () {
+                    if (isPaused) {
+                        resumeCycle();
+                    } else {
+                        pauseCycle(false);
+                    }
+                });
+            }
+
+            // Attach click events to rows
+            rows.forEach(function (r, k) {
+                r.addEventListener('click', function () {
+                    setStage(k, true);
+                });
+            });
+
+            // Attach click events to SVG nodes
+            nodes.forEach(function (n, k) {
+                n.addEventListener('click', function () {
+                    setStage(k, true);
+                });
+            });
+
+            // Attach click events to flow breadcrumb pills
+            pills.forEach(function (pill, k) {
+                pill.addEventListener('click', function () {
+                    setStage(k, true);
+                });
+            });
+
+            // IntersectionObserver to only cycle when in view
+            if ('IntersectionObserver' in window) {
+                var obs = new IntersectionObserver(function (entries) {
+                    isVisible = entries[0].isIntersecting;
+                }, { threshold: 0.25 });
+                var sec = document.getElementById('how-sec');
+                if (sec) obs.observe(sec);
+            }
+
+            window.addEventListener('resize', function () {
+                var c = cur;
+                cur = -1;
+                setStage(c, false);
+            }, { passive: true });
+
+            // Initialize on step 0
+            setStage(0, false);
+            startTimer();
+        })();
+    </script>
+</body>
+</html>
