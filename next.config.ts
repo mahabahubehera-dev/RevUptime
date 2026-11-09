@@ -1,9 +1,4 @@
 import type { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
-  poweredByHeader: false,
-  allowedDevOrigins: ['*.trycloudflare.com'],
-};
-
+const nextConfig: NextConfig = { poweredByHeader: false };
 export default nextConfig;
 
