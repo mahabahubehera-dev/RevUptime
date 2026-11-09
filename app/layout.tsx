@@ -1,12 +1,10 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import { Navbar, Footer } from '@/components/marketing/layout';
 import { JsonLd } from '@/components/seo/json-ld';
 import { seo } from '@/data/seo';
 import { SITE_URL, SITE_NAME, OG_IMAGE, ORG_ID } from '@/lib/seo';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: seo['/'].title, template: '%s | RevUptime' },
@@ -49,5 +47,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <meta name="google-site-verification" content="M69gOIV1spwVedlUbBvRzHe5s5oOAFmeAGW00rM-41A" />
     {/* Google Tag Manager */}
     <script dangerouslySetInnerHTML={{ __html: gtmScript }} />
-  </head><body>{/* Google Tag Manager (noscript) */}<noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} /></noscript><a className="skip-link" href="#main">Skip to content</a><Navbar />{children}<Footer /><JsonLd data={siteJsonLd} /></body></html>;
+    <JsonLd data={siteJsonLd} />
+  </head><body>{/* Google Tag Manager (noscript) */}<noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} /></noscript><a className="skip-link" href="#main">Skip to content</a><Navbar />{children}<Footer /></body></html>;
 }

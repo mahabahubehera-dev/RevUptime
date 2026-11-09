@@ -17,7 +17,7 @@ export function Hero() {
             <p>“ID Fan M-104 is 100% above its normal vibration baseline. Check bearing alignment before the next shift.”</p>
             <small>Illustrative message · for your maintenance team</small>
           </div>
-          <p className="hero-local-seo">Predictive maintenance for steel plants, mining operations, cement plants and process industries across the Globe.</p>
+          <Link className="hero-local-seo" href="/blog/predictive-maintenance-steel-plants-odisha">Predictive maintenance for steel plants, mining operations, cement plants and process industries across the Globe.</Link>
           <div className="landing-actions">
             <Link className="button landing-gradient" href="#pilot">Book a Discovery Call <ArrowUpRight size={18}/></Link>
             <Link className="button secondary" href="/roi-calculator">Calculate Your ROI <ArrowUpRight size={17}/></Link>
