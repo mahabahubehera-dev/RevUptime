@@ -1,12 +1,10 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import { Navbar, Footer } from '@/components/marketing/layout';
 import { JsonLd } from '@/components/seo/json-ld';
 import { seo } from '@/data/seo';
 import { SITE_URL, SITE_NAME, OG_IMAGE, ORG_ID } from '@/lib/seo';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: seo['/'].title, template: '%s | RevUptime' },
@@ -42,9 +40,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${GTM_ID}');`;
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" data-scroll-behavior="smooth" className={inter.variable}><head>
+  return <html lang="en" data-scroll-behavior="smooth"><head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
     <meta name="google-site-verification" content="M69gOIV1spwVedlUbBvRzHe5s5oOAFmeAGW00rM-41A" />
     {/* Google Tag Manager */}
     <script dangerouslySetInnerHTML={{ __html: gtmScript }} />
-  </head><body>{/* Google Tag Manager (noscript) */}<noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} /></noscript><a className="skip-link" href="#main">Skip to content</a><Navbar />{children}<Footer /><JsonLd data={siteJsonLd} /></body></html>;
+    <JsonLd data={siteJsonLd} />
+  </head><body>{/* Google Tag Manager (noscript) */}<noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} /></noscript><a className="skip-link" href="#main">Skip to content</a><Navbar />{children}<Footer /></body></html>;
 }

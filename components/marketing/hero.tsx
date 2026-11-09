@@ -17,14 +17,45 @@ export function Hero() {
             <p>“ID Fan M-104 is 100% above its normal vibration baseline. Check bearing alignment before the next shift.”</p>
             <small>Illustrative message · for your maintenance team</small>
           </div>
-          <p className="hero-local-seo">Predictive maintenance for steel plants, mining operations, cement plants and process industries across the Globe.</p>
+          <Link className="hero-local-seo" href="/blog/predictive-maintenance-steel-plants-odisha">Predictive maintenance for steel plants, mining operations, cement plants and process industries across the Globe.</Link>
           <div className="landing-actions">
             <Link className="button landing-gradient" href="#pilot">Book a Discovery Call <ArrowUpRight size={18}/></Link>
             <Link className="button secondary" href="/roi-calculator">Calculate Your ROI <ArrowUpRight size={17}/></Link>
           </div>
         </div>
-        <div className="landing-hero-art">
-          <Image src="/images/revuptime-predictive-intelligence.png" alt="RevUptime predictive intelligence connecting plant signals to maintenance decisions and measurable business outcomes" width={1536} height={1024} priority sizes="(max-width: 767px) 100vw, 58vw" />
+        <div className="landing-hero-art" style={{ position: 'relative' }}>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            disablePictureInPicture
+            disableRemotePlayback
+            controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
+            tabIndex={-1}
+            aria-hidden="true"
+            width={1920}
+            height={1080}
+            style={{ pointerEvents: 'none', userSelect: 'none' }}
+            aria-label="RevUptime multimodal asset health and predictive maintenance visualization"
+          >
+            <source src="/images/hero-telemetry.mp4" type="video/mp4" />
+          </video>
+          {/* Transparent click/hover shield so the browser never displays media controls or context menus */}
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: 10,
+              pointerEvents: 'auto',
+              cursor: 'default',
+              background: 'transparent',
+            }}
+          />
         </div>
       </div>
     </section>

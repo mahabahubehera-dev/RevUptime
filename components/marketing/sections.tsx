@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import type { ReactNode } from 'react';
 import { Activity, AlertTriangle, Clock3, Users, ClipboardCheck, Check, Cpu, Cog, Fan, Waves, Workflow, CircleGauge, Factory, Mountain, Flame, Zap, Anchor, Wrench, Layers3, MapPin, Eye, ListChecks, BookOpen, Smartphone, Bell, History, ShieldCheck, Sparkles, BrainCircuit, TrendingUp, Gauge, Thermometer, Timer, Database, FileText, ArrowDown, ArrowUpRight } from 'lucide-react';
 import { assets, industries } from '@/data/content';
 import { DashboardMockup } from '@/components/product/dashboard';
@@ -7,9 +8,9 @@ import { AIChatDemo } from '@/components/product/copilot';
 import { MobileAppMockup } from '@/components/product/mobile-demo';
 export { HowItWorks } from '@/components/marketing/how-it-works';
 
-export function SectionHeading({eyebrow,title,description,center=false}:{eyebrow:string;title:string;description?:string;center?:boolean}){return <div className={`section-heading ${center?'center':''}`}><span className="section-eyebrow">{eyebrow}</span><h2>{title}</h2>{description&&<p>{description}</p>}</div>;}
+export function SectionHeading({eyebrow,title,description,center=false}:{eyebrow:string;title:ReactNode;description?:ReactNode;center?:boolean}){return <div className={`section-heading ${center?'center':''}`}><span className="section-eyebrow">{eyebrow}</span><h2>{title}</h2>{description&&<p>{description}</p>}</div>;}
 export function ProblemSection(){const problems=[{icon:AlertTriangle,title:'Reactive maintenance',text:'Equipment gets attention after abnormal operation has already affected production.'},{icon:Clock3,title:'Inspection gaps',text:'Periodic manual rounds can miss deterioration developing between inspections.'},{icon:Users,title:'Limited reliability expertise',text:'Not every plant has a dedicated team of vibration and reliability specialists.'}];return <section className="section problem"><div className="container"><div className="split-heading"><SectionHeading eyebrow="THE SIGNS ARE THERE" title="Your machines usually warn you before they fail."/><p>The problem is that many of those warning signs remain invisible between manual inspections.</p></div><div className="three-grid problem-grid">{problems.map((p,i)=><article key={p.title} className="problem-card"><div className="card-top"><p.icon size={24}/><span>0{i+1}</span></div><h3>{p.title}</h3><p>{p.text}</p></article>)}</div><p className="transition-line"><Activity size={18}/> RevUptime keeps watch between inspections.</p></div></section>;}
-export function ProductSection(){return <section className="section dark-section product-section" id="dashboard"><div className="container"><div className="split-heading"><SectionHeading eyebrow="YOUR PLANT. IN PERSPECTIVE." title="One view of machine health." description="Give your maintenance team a clear view of which assets need attention—and which do not."/><Link href="/product" className="text-link light-link">Explore the platform</Link></div><DashboardMockup/><div className="product-footnotes"><span><Check size={14}/> Machine-specific baselines</span><span><Check size={14}/> Prioritised alerts</span><span><Check size={14}/> Condition history</span><span><Check size={14}/> All your assets, one view</span></div></div></section>;}
+export function ProductSection(){return <section className="section dark-section product-section" id="dashboard"><div className="container"><div className="split-heading"><SectionHeading eyebrow="YOUR PLANT. IN PERSPECTIVE." title={<><span className="product-heading-primary">Predictive Maintenance Software:</span><span className="product-heading-secondary">One View of Machine Health</span></>} description="Give your maintenance team a clear view of which assets need attention—and which do not."/><Link href="/product" className="text-link light-link">Explore the platform</Link></div><DashboardMockup/><div className="product-footnotes"><span><Check size={14}/> Machine-specific baselines</span><span><Check size={14}/> Prioritised alerts</span><span><Check size={14}/> Condition history</span><span><Check size={14}/> All your assets, one view</span></div></div></section>;}
 export function CopilotSection(){
   const inputs=['Live vibration and temperature','Machine-specific historical baselines','Condition trends and active alerts','Previous maintenance events','Asset specifications','Equipment manuals','Maintenance SOPs'];
   return <section className="section ai-copilot-section" id="copilot"><div className="container two-column copilot-section">
@@ -39,33 +40,13 @@ export function AIIntelligenceSection(){
     {icon:ListChecks,title:'Actionable Guidance',text:'Helps maintenance teams understand what changed and what should be inspected first.'},
   ];
   return <section className="section light-section ai-capability-section"><div className="container">
-    <SectionHeading eyebrow="MACHINE INTELLIGENCE" title="Every Machine Learns Its Own Normal." description="RevUptime builds a machine-specific operating baseline instead of treating every motor, pump or gearbox as identical." center/>
+    <SectionHeading eyebrow="MACHINE INTELLIGENCE" title="Vibration Analysis and Machine Baselines for Every Asset" description="RevUptime builds a machine-specific operating baseline instead of treating every motor, pump or gearbox as identical." center/>
     <div className="ai-capability-grid">{capabilities.map((item,index)=><article key={item.title}><span className="ai-capability-index">0{index+1}</span><item.icon size={25}/><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
     <p className="ai-section-line">Don’t just monitor machines. Understand them.</p>
   </div></section>;
 }
 
-export function ExplainableAISection(){
-  const evidence=[
-    {icon:Activity,label:'Vibration',current:'4.2 mm/s',detail:'Baseline: 2.1 mm/s',change:'+100%'},
-    {icon:Thermometer,label:'Temperature',current:'68°C',detail:'Baseline: 59°C',change:'+9°C'},
-    {icon:Timer,label:'Condition Duration',current:'3.4 hours',detail:'Sustained deviation',change:'Active'},
-    {icon:History,label:'Maintenance History',current:'143 days ago',detail:'Previous bearing inspection',change:'Review'},
-  ];
-  return <section className="section explainable-section" id="explainable-ai"><div className="container two-column explainable-layout">
-    <div>
-      <SectionHeading eyebrow="EXPLAINABLE AI" title="Know Why the Machine Is at Risk." description="RevUptime shows the evidence behind each AI-assisted assessment, so maintenance teams can review the condition and decide what to do next."/>
-      <p className="ai-section-line left">Know what changed. Understand why. Act earlier.</p>
-    </div>
-    <div className="evidence-panel">
-      <div className="evidence-head"><div><span>CONDITION EVIDENCE</span><strong>ID Fan Motor M-104</strong></div><span className="status watch">Watch</span></div>
-      <div className="evidence-grid">{evidence.map((item)=><div key={item.label}><item.icon size={17}/><span>{item.label}</span><strong>{item.current}</strong><small>{item.detail}</small><b>{item.change}</b></div>)}</div>
-      <div className="assessment-card"><span><Sparkles size={15}/> REVUPTIME ASSESSMENT</span><p>The combination of increasing vibration and increasing temperature indicates that this machine should be inspected before further deterioration.</p></div>
-      <div className="evidence-links"><Link href="#dashboard">View Sensor Data</Link><Link href="#copilot">View Maintenance History</Link><Link href="/product#copilot">View Relevant SOP</Link></div>
-      <small className="illustrative-label">Illustrative product data</small>
-    </div>
-  </div></section>;
-}
+export { ExplainableAISection } from '@/components/marketing/explainable-ai-section';
 
 export function ConditionTimelineSection(){
   const steps=[
@@ -80,10 +61,56 @@ export function ConditionTimelineSection(){
     <div className="timeline-note"><Activity size={15}/><span>Illustrative condition progression</span><b>Turn machine signals into maintenance decisions.</b></div>
   </div></section>;
 }
-export function MobileSection(){return <section className="section light-section" id="mobile"><div className="container mobile-section"><MobileAppMockup/><div><SectionHeading eyebrow="AI-ASSISTED MAINTENANCE, ANYWHERE" title="Ask RevUptime AI from the plant floor." description="Give operators and maintenance engineers access to machine health, explainable AI insights and inspection priorities wherever the next decision happens."/><div className="mobile-feature-grid">{[[Bell,'Push notifications'],[CircleGauge,'Machine health'],[Activity,'Condition trends'],[Sparkles,'Ask RevUptime AI'],[History,'Maintenance history'],[Smartphone,'Mobile access']].map(([Icon,text])=>{const I=Icon as typeof Bell;return <div key={text as string}><I size={19}/><span>{text as string}</span></div>;})}</div><p className="subtle-note">Know what changed, understand why and create an inspection from the same mobile workflow. WhatsApp can be an optional alert channel.</p><Link className="text-link" href="/contact">See it in your pilot</Link></div></div></section>;}
+export function MobileSection(){
+  return (
+    <section className="section light-section" id="mobile">
+      <div className="container">
+        <SectionHeading
+          eyebrow="FROM REAL-TIME SIGNALS TO INTELLIGENT DECISIONS"
+          title="From Connected Assets to Intelligent Operations."
+          description="Transforming industrial data into actionable insights."
+          center
+        />
+        <div className="mobile-section">
+          <MobileAppMockup />
+          <div className="mobile-video-wrap">
+            <video
+              src="/images/predictive-intelligence.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              disablePictureInPicture
+              disableRemotePlayback
+              controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
+              tabIndex={-1}
+              aria-hidden="true"
+              className="mobile-video"
+            />
+            {/* Transparent click/hover shield so the browser never displays media controls or context menus */}
+            <div
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: 10,
+                pointerEvents: 'auto',
+                cursor: 'default',
+                background: 'transparent',
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 export function AssetSection(){return <section className="section" id="assets"><div className="container"><SectionHeading eyebrow="THE MACHINES THAT MATTER" title="Built around the equipment that keeps production moving." center/><div className="asset-grid asset-photo-grid">{assets.map((a,i)=><Link href={`/solutions/predictive-maintenance#${a.icon}`} className="asset-card asset-photo-card" key={a.name}><div className="asset-photo"><Image src={`/images/equipment/${a.icon}.webp`} alt={a.imageAlt} fill sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"/><span className="asset-photo-label">ASSET / 0{i+1}</span></div><div className="asset-photo-copy"><h3>{a.name}</h3><p>{a.detail}</p><span className="asset-explore">Explore monitoring <ArrowUpRight size={15}/></span></div></Link>)}</div><p className="industry-image-note">Illustrative equipment imagery.</p></div></section>;}
 export function IndustriesSection(){return <section className="section light-section" id="industries"><div className="container"><div className="split-heading"><SectionHeading eyebrow="INDUSTRIAL AT OUR CORE" title="Built for industrial operations."/><p>From steel and mining to the machinery moving material across your plant.</p></div><div className="three-grid industry-grid">{industries.map((item)=><Link href={item.href} className="industry-card industry-photo-card" key={item.name}><div className="industry-card-photo"><Image src={item.image} alt={item.imageAlt} fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw"/></div><div className="industry-card-copy"><span className="micro">{item.tag}</span><h3>{item.name}</h3><p>{item.description}</p><span className="text-link">Explore industry <ArrowUpRight size={15}/></span></div></Link>)}</div><p className="industry-image-note">Illustrative industry imagery.</p></div></section>;}
-export function WhySection(){const items=[{icon:Wrench,title:'Retrofit existing machines',text:'Bring continuous monitoring to the equipment you already rely on.'},{icon:Layers3,title:'Start small. Scale with confidence.',text:'Begin with a focused group of critical machines and expand after reviewing the value.'},{icon:Users,title:'Built for industrial teams',text:'Clear alerts and machine history that make sense on a busy plant floor.'},{icon:MapPin,title:'Local implementation',text:'Focused support for industrial plants across Odisha, including Jharsuguda, Angul, Rourkela, Talcher, Paradeep and Kalinga Nagar.'}];return <section className="section"><div className="container two-column why-section"><SectionHeading eyebrow="PRACTICAL BY DESIGN" title="Predictive maintenance without enterprise complexity." description="An easy-to-implement condition monitoring platform for plants ready to move beyond the traditional computerised maintenance system model."/><div className="why-grid">{items.map(x=><article key={x.title}><x.icon size={23}/><h3>{x.title}</h3><p>{x.text}</p></article>)}</div></div></section>;}
+export function WhySection(){const items=[{icon:Wrench,title:'Retrofit existing machines',text:'Bring continuous monitoring to the equipment you already rely on.'},{icon:Layers3,title:'Start small. Scale with confidence.',text:'Begin with a focused group of critical machines and expand after reviewing the value.'},{icon:Users,title:'Built for industrial teams',text:'Clear alerts and machine history that make sense on a busy plant floor.'},{icon:MapPin,title:'Local implementation',text:'Focused support for industrial plants across Odisha, including Jharsuguda, Angul, Rourkela, Talcher, Paradeep and Kalinga Nagar.'}];return <section className="section"><div className="container two-column why-section"><SectionHeading eyebrow="PRACTICAL BY DESIGN" title="Predictive maintenance without enterprise complexity." description={<>An easy-to-implement <Link className="condition-guide-link" href="/blog/condition-monitoring-system-guide">condition monitoring</Link> platform for plants ready to move beyond the traditional computerised maintenance system model.</>}/><div className="why-grid">{items.map(x=><article key={x.title}><x.icon size={23}/><h3>{x.title}</h3><p>{x.text}</p></article>)}</div></div></section>;}
 export function PilotSection(){return <section className="pilot-section dark-section" id="pilot"><div className="container"><div className="pilot-intro"><div><span className="section-eyebrow">THE 90-DAY PILOT PROGRAM</span><h2>Prove it on your machines.</h2><p>Start focused. Build a baseline. See what your plant data tells you.</p></div><Link className="button" href="/contact">Request a Pilot</Link></div><div className="pilot-grid"><article><strong>05<span>Machines</span></strong><p>A focused group of critical motors or rotating assets.</p></article><article><strong>90<span>Days</span></strong><p>Establish baselines and monitor real operating behaviour.</p></article><article><span className="pilot-symbol"><Activity size={34}/></span><h3>Real plant data</h3><p>Evaluate machine conditions from your own operations.</p></article><article><span className="pilot-symbol"><ClipboardCheck size={34}/></span><h3>Review the results</h3><p>Decide whether a wider rollout makes sense for your team.</p></article></div><div className="pilot-roadmap"><div className="pilot-roadmap-heading"><span>90-DAY ROADMAP</span><h3>From first baseline to plant-wide decision.</h3><p>Expand only after reviewing suitability and value at each step.</p></div><div className="pilot-roadmap-steps"><article><span>WEEK 1–2</span><h4>Scope & baseline</h4><p>Confirm five suitable assets, install sensors and learn normal operating patterns.</p></article><article><span>FIRST ALERT</span><h4>Investigate together</h4><p>Review signal evidence and operating context with the plant maintenance team.</p></article><article><span>REVIEW & SCALE</span><h4>Expand by priority</h4><p>Use pilot findings to select the next assets and agree a practical coverage plan.</p></article><article><span>PLANT-WIDE</span><h4>Build the reliability loop</h4><p>Extend monitoring in stages, with local ownership and ongoing outcome review.</p></article></div></div></div></section>;}
 export function OutcomesSection(){const items=[{icon:Eye,title:'Earlier visibility',text:'Identify developing machine-condition changes sooner.'},{icon:ListChecks,title:'Better prioritisation',text:'Know which machines deserve attention first.'},{icon:Wrench,title:'Focused inspections',text:'Use condition data to focus valuable engineering time.'},{icon:BookOpen,title:'Maintenance knowledge',text:'Keep machine history, alerts and asset context together.'}];return <section className="section"><div className="container"><SectionHeading eyebrow="BETTER INFORMED. BETTER PREPARED." title="Move maintenance from reaction to decision." center/><div className="four-grid outcomes">{items.map(x=><article key={x.title}><x.icon size={25}/><h3>{x.title}</h3><p>{x.text}</p></article>)}</div><div className="reliability-spectrum"><span>Manual<br/>checks</span><span>Periodic<br/>monitoring</span><strong><Activity size={23}/> RevUptime<br/>Continuous intelligence</strong><span>Enterprise reliability<br/>transformation</span></div><p className="spectrum-note">Move toward continuous, data-driven reliability without a complex enterprise transformation on day one.</p></div></section>;}
 export function CompanySection(){return <section className="company-section" id="company"><div className="container company-grid"><div className="company-photo"><Image src="/images/industrial-floor.jpg" alt="Overhead cranes and heavy machinery inside an industrial production plant" fill sizes="(max-width: 767px) 100vw, 50vw"/><div className="photo-label"><MapPin size={17}/><span>Built for life on the plant floor.</span></div></div><div className="company-copy"><SectionHeading eyebrow="ROOTED IN ODISHA. BUILT FOR INDIA." title="Built close to the machines we serve."/><p>RevUptime is being built in Odisha, one of India’s major steel, mining and industrial regions.</p><p>Our first focus is simple: make modern machine-condition monitoring practical for operations beyond India’s largest metropolitan and enterprise centres.</p><div className="region-path"><span>Odisha</span><i/><span>Eastern India</span><i/><span>India</span></div><Link href="/about" className="text-link">Get to know RevUptime</Link></div></div></section>;}
