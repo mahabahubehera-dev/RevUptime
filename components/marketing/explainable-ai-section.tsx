@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
 import { initPlant3D } from './plant-3d-scene';
 
@@ -17,7 +18,7 @@ export function ExplainableAISection() {
 
   return (
     <section
-      className="section dark-section srbio-section"
+      className="section dark-section srbio-section explainable-ai-section"
       id="explainable-ai"
       style={{
         padding: '5rem 0 4rem 0',
@@ -31,18 +32,25 @@ export function ExplainableAISection() {
           <span className="section-eyebrow" style={{ color: '#80c2ff' }}>EXPLAINABLE AI</span>
           <h2
             style={{
-              fontSize: 'clamp(1.5rem, 3.4vw, 2.75rem)',
-              fontWeight: 800,
+              margin: '0.5rem 0',
+              lineHeight: 1.2,
               letterSpacing: '-0.025em',
               color: '#ffffff',
-              margin: '0.5rem 0',
-              whiteSpace: 'nowrap',
             }}
           >
-            Know Why the Machine Is at Risk
+            <span className="explainable-heading-primary">
+              Explainable AI Condition Monitoring:
+            </span>
+            <span className="explainable-heading-secondary">
+              Know Why a Machine Is at Risk
+            </span>
           </h2>
           <p style={{ maxWidth: '720px', margin: '0 auto', color: '#9eafc5', fontSize: '1.05rem', lineHeight: 1.6 }}>
-            See risks before they impact operations. Explore the 3D plant floor with real-time condition intelligence, explainable risk evidence, and automated priority queues.
+            RevUptime shows the evidence behind each AI-assisted{' '}
+            <Link href="/blog/what-is-predictive-maintenance" style={{ color: '#80c2ff', textDecoration: 'underline', textUnderlineOffset: '2px' }}>
+              predictive maintenance
+            </Link>{' '}
+            assessment, so teams can review the condition and decide what to do next.
           </p>
         </div>
 
@@ -234,4 +242,3 @@ export function ExplainableAISection() {
     </section>
   );
 }
-

@@ -3706,15 +3706,17 @@ export function initPlant3D(
     window.addEventListener('resize', onWindowResize);
 
     // --- Animation Loop ---
-    let clock = new THREE.Clock();
+    const timer = new THREE.Timer();
+    timer.connect(document);
     let scanZ = -34;
     let scanDir = 1;
 
-    function animate() {
+    function animate(timestamp: number) {
       if (isDisposed) return; animId = requestAnimationFrame(animate);
 
-      const delta = clock.getDelta();
-      const elapsed = clock.getElapsedTime();
+      timer.update(timestamp);
+      const delta = timer.getDelta();
+      const elapsed = timer.getElapsed();
 
       // Idle Gentle Camera Float
       if (isMoving && !controls.state && !targetCamPos) {
@@ -4012,6 +4014,7 @@ export function initPlant3D(
       container.removeEventListener('mousedown', onMouseDown);
       container.removeEventListener('mouseup', onMouseUp);
       delete (window as any).selectPQItem;
+      timer.dispose();
       try {
         controls.dispose();
         renderer.dispose();
