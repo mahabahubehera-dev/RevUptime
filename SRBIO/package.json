@@ -1,0 +1,22 @@
+{
+  "name": "tractian-clone",
+  "version": "1.0.0",
+  "description": "Pixel-perfect clone of Tractian (https://tractian.com/en) captured via REA",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "start:3333": "PORT=3333 node server.js",
+    "start:4000": "PORT=4000 node server.js",
+    "start:5000": "PORT=5000 node server.js",
+    "start:8000": "PORT=8000 node server.js"
+  },
+  "keywords": [
+    "tractian",
+    "clone",
+    "rea",
+    "antigravity"
+  ],
+  "author": "",
+  "license": "ISC"
+}
