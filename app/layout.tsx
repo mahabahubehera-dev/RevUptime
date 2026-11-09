@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import { Navbar, Footer } from '@/components/marketing/layout';
 import { JsonLd } from '@/components/seo/json-ld';
 import { seo } from '@/data/seo';
 import { SITE_URL, SITE_NAME, OG_IMAGE, ORG_ID } from '@/lib/seo';
 import './globals.css';
+
+const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
