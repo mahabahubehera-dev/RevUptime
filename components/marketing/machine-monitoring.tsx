@@ -34,24 +34,41 @@ const measurements = [
   },
 ];
 
-const monitoringSlides = [
+interface MonitoringSlide {
+  src: string;
+  alt: string;
+  badge?: string;
+  title: string;
+  description: string;
+  bearingNote?: string;
+  imageFit: 'cover' | 'contain';
+  showOverlay: boolean;
+}
+
+const monitoringSlides: MonitoringSlide[] = [
   {
-    src: '/images/revuptime-condition-sensor.png',
-    alt: 'RevUptime-branded condition sensor shown mounted near the bearing of an industrial motor',
-    badge: 'REVUPTIME CONDITION SENSOR',
-    title: 'Monitor condition at the machine.',
-    description: 'A sensor mounted near the bearing observes vibration and temperature while the machine operates.',
-    bearingNote: 'Mounted close to the machine bearing / vibration source',
-    imageFit: 'cover',
+    src: '/images/machine-monitoring-mechanical.jpg',
+    alt: 'Mechanical monitoring on an industrial motor showing RevUpTime vibration and temperature sensor placement and 74% mechanical health telemetry',
+    title: 'Mechanical Monitoring',
+    description: 'Track asset health through vibration, temperature, and bearing condition in real time.',
+    imageFit: 'contain',
+    showOverlay: false,
   },
   {
-    src: '/images/revuptime-installed-sensor.png',
-    alt: 'RevUptime-branded vibration sensor shown installed on the bearing housing of an industrial electric motor',
-    badge: 'REVUPTIME MOTOR SENSOR',
-    title: 'Installed close to the source.',
-    description: 'An example installation shows the sensor fitted on a motor bearing housing for machine-condition monitoring.',
-    bearingNote: 'Sensor fixed at the motor bearing housing',
-    imageFit: 'cover',
+    src: '/images/machine-monitoring-operational.jpg',
+    alt: 'Operational monitoring on process piping showing RevUpTime sensor and 96% operational health metrics for temperature, pressure, flow rate, and humidity',
+    title: 'Operational Monitoring',
+    description: 'Track key process variables like pressure, flow, temperature, and humidity in real time.',
+    imageFit: 'contain',
+    showOverlay: false,
+  },
+  {
+    src: '/images/machine-monitoring-electrical.jpg',
+    alt: 'Electrical monitoring inside an industrial control panel showing RevUpTime sensor and 87% electrical health metrics for voltage, current, power, and frequency',
+    title: 'Electrical Monitoring',
+    description: 'Track power, current, voltage, and energy health in real time.',
+    imageFit: 'contain',
+    showOverlay: false,
   },
   {
     src: '/images/revuptime-sensor-metrics.png',
@@ -59,10 +76,10 @@ const monitoringSlides = [
     badge: 'ILLUSTRATIVE SENSOR OUTPUTS',
     title: 'Turn machine behaviour into measurable data.',
     description: 'Vibration, motion, frequency and temperature provide condition context for maintenance review.',
-    bearingNote: undefined,
     imageFit: 'contain',
+    showOverlay: true,
   },
-] as const;
+];
 
 export function MachineMonitoringSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -149,19 +166,23 @@ export function MachineMonitoringSection() {
                       src={slide.src}
                       alt={slide.alt}
                       fill
-                      sizes="(max-width: 767px) 100vw, 55vw"
+                      unoptimized={true}
                     />
-                    <span className="sensor-photo-label"><Activity size={15}/> {slide.badge}</span>
+                    {slide.showOverlay && slide.badge && (
+                      <span className="sensor-photo-label"><Activity size={15}/> {slide.badge}</span>
+                    )}
                     {slide.bearingNote && (
                       <>
                         <span className="bearing-callout"><i aria-hidden="true"/> {slide.bearingNote}</span>
                         <span className="sensor-location-dot" aria-hidden="true"/>
                       </>
                     )}
-                    <div className="machine-slide-purpose">
-                      <strong>{slide.title}</strong>
-                      <span>{slide.description}</span>
-                    </div>
+                    {slide.showOverlay && (
+                      <div className="machine-slide-purpose">
+                        <strong>{slide.title}</strong>
+                        <span>{slide.description}</span>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

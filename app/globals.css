@@ -6682,8 +6682,12 @@ td button small,
 }
 
 .landing-hero {
+    position: relative;
     padding: 58px 0 48px;
-    background: #fff;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0) 76%, #ffffff 100%),
+        radial-gradient(ellipse 68% 92% at 78% 46%, #eaf2fd 0%, #f3f8fe 52%, rgba(255, 255, 255, 0) 82%),
+        linear-gradient(112deg, #ffffff 0%, #ffffff 30%, #f4f8fe 64%, #eaf2fd 100%);
     overflow: hidden
 }
 
@@ -6691,11 +6695,13 @@ td button small,
     display: grid;
     grid-template-columns: minmax(390px, .78fr) minmax(0, 1.22fr);
     align-items: center;
-    gap: 48px
+    gap: 32px
 }
 
 .landing-hero-copy {
-    padding: 4px 0 12px
+    position: relative;
+    z-index: 2;
+    padding: 4px 0 0
 }
 
 .landing-eyebrow {
@@ -6792,7 +6798,7 @@ td button small,
 .hero-local-seo {
     display: block;
     max-width: 540px;
-    margin-top: 12px;
+    margin-top: 16px;
     color: #69788e;
     font-size: 12px;
     line-height: 1.65;
@@ -6824,16 +6830,31 @@ td button small,
     color: #3579f1
 }
 
+.landing-hero-bottom {
+    display: grid;
+    grid-template-columns: minmax(390px, .78fr) minmax(0, 1.22fr);
+    align-items: center;
+    gap: 32px;
+    margin-top: 8px
+}
+
 .landing-actions {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
     gap: 12px;
-    margin-top: 32px
+    width: 100%;
+    max-width: 510px;
+    margin-top: 0
 }
 
 .landing-actions .button {
+    width: 100%;
     min-height: 49px;
-    font-size: 14px
+    padding-inline: 14px;
+    gap: 8px;
+    font-size: 14px;
+    white-space: nowrap
 }
 
 .landing-actions .landing-gradient {
@@ -6855,17 +6876,53 @@ td button small,
 .landing-hero-art {
     min-width: 0;
     position: relative;
+    z-index: 1;
     user-select: none;
     -webkit-user-select: none;
 }
 
-.landing-hero-art img,
+.landing-hero-art img.landing-hero-main,
 .landing-hero-art video {
     display: block;
-    width: 100%;
+    width: 146%;
+    max-width: none;
+    margin-left: -36%;
+    margin-right: -10%;
+    margin-bottom: -96px;
+    transform: translateY(-28px);
     height: auto;
     object-fit: contain;
-    border-radius: 12px;
+    border-radius: 0;
+    -webkit-mask-image:
+        linear-gradient(90deg, transparent 0%, transparent 18%, rgba(0, 0, 0, .45) 24%, #000 30%, #000 98%, transparent 100%),
+        linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+        linear-gradient(90deg, transparent 0%, transparent 18%, rgba(0, 0, 0, .45) 24%, #000 30%, #000 98%, transparent 100%),
+        linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    mask-composite: intersect;
+    pointer-events: none !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+}
+
+.landing-hero-strip-wrap {
+    min-width: 0;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+img.landing-hero-strip {
+    display: block;
+    width: 106%;
+    max-width: none;
+    margin: -56px -3%;
+    height: auto;
+    object-fit: contain;
     pointer-events: none !important;
     user-select: none !important;
     -webkit-user-select: none !important;
@@ -7010,9 +7067,25 @@ td button small,
 }
 
 @media(max-width:1100px) {
-    .landing-hero-grid {
+    .landing-hero-grid,
+    .landing-hero-bottom {
         grid-template-columns: minmax(320px, .78fr) minmax(0, 1.22fr);
-        gap: 28px
+        gap: 24px
+    }
+
+    .landing-hero-art img.landing-hero-main,
+    .landing-hero-art video {
+        width: 130%;
+        max-width: none;
+        margin-left: -24%;
+        margin-right: -6%;
+        margin-bottom: -60px;
+        transform: translateY(-16px)
+    }
+
+    img.landing-hero-strip {
+        width: 104%;
+        margin: -36px -2%
     }
 
     .landing-hero-copy h1 {
@@ -7040,9 +7113,14 @@ td button small,
         padding: 39px 0 32px
     }
 
-    .landing-hero-grid {
+    .landing-hero-grid,
+    .landing-hero-bottom {
         grid-template-columns: 1fr;
-        gap: 28px
+        gap: 20px
+    }
+
+    .landing-hero-bottom {
+        margin-top: 10px
     }
 
     .landing-hero-copy {
@@ -7068,7 +7146,7 @@ td button small,
     }
 
     .landing-actions {
-        margin-top: 23px;
+        margin-top: 0;
         gap: 9px
     }
 
@@ -7079,7 +7157,29 @@ td button small,
     }
 
     .landing-hero-art {
-        margin: 0 -8px
+        margin: 0
+    }
+
+    .landing-hero-art img.landing-hero-main,
+    .landing-hero-art video {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+        transform: none;
+        -webkit-mask-image:
+            linear-gradient(90deg, transparent 0%, #000 10%, #000 96%, transparent 100%),
+            linear-gradient(180deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+        mask-image:
+            linear-gradient(90deg, transparent 0%, #000 10%, #000 96%, transparent 100%),
+            linear-gradient(180deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+    }
+
+    img.landing-hero-strip {
+        width: 100%;
+        max-width: 100%;
+        margin: -24px 0
     }
 }
 
@@ -8496,6 +8596,72 @@ td button small,
     gap: 18px
 }
 
+.ai-capability-split {
+    display: grid;
+    grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr);
+    align-items: stretch;
+    gap: 28px
+}
+
+.ai-capability-split .ai-capability-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 1fr 1fr;
+    gap: 14px;
+    height: 100%
+}
+
+.ai-capability-split .ai-capability-grid article {
+    min-height: 0;
+    padding: 18px 18px
+}
+
+.ai-capability-split .ai-capability-grid svg {
+    margin-bottom: 14px
+}
+
+.ai-capability-split .ai-capability-grid h3 {
+    font-size: 16px
+}
+
+.ai-capability-split .ai-capability-grid p {
+    margin-top: 8px;
+    font-size: 12.5px;
+    line-height: 1.55
+}
+
+.ai-capability-media {
+    position: relative;
+    min-width: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #d7e2ed;
+    box-shadow: 0 18px 42px rgba(19, 57, 95, .08);
+    user-select: none;
+    -webkit-user-select: none
+}
+
+.ai-capability-media video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none !important;
+    user-select: none !important;
+    -webkit-user-select: none !important
+}
+
+.ai-capability-media video::-webkit-media-controls,
+.ai-capability-media video::-webkit-media-controls-enclosure,
+.ai-capability-media video::-webkit-media-controls-panel {
+    display: none !important;
+    opacity: 0 !important
+}
+
 .ai-capability-grid article {
     position: relative;
     min-height: 250px;
@@ -8941,6 +9107,21 @@ td button small,
         max-width: 680px
     }
 
+    .ai-capability-split {
+        grid-template-columns: 1fr;
+        gap: 28px
+    }
+
+    .ai-capability-split .ai-capability-grid {
+        grid-template-rows: auto;
+        height: auto
+    }
+
+    .ai-capability-media,
+    .ai-capability-media video {
+        height: auto
+    }
+
     .ai-capability-grid {
         grid-template-columns: 1fr 1fr
     }
@@ -9025,11 +9206,13 @@ td button small,
         font-size: 9px
     }
 
-    .ai-capability-grid {
+    .ai-capability-grid,
+    .ai-capability-split .ai-capability-grid {
         grid-template-columns: 1fr
     }
 
-    .ai-capability-grid article {
+    .ai-capability-grid article,
+    .ai-capability-split .ai-capability-grid article {
         min-height: 0
     }
 

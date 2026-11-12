@@ -41,7 +41,37 @@ export function AIIntelligenceSection(){
   ];
   return <section className="section light-section ai-capability-section"><div className="container">
     <SectionHeading eyebrow="MACHINE INTELLIGENCE" title="Vibration Analysis and Machine Baselines for Every Asset" description="RevUptime builds a machine-specific operating baseline instead of treating every motor, pump or gearbox as identical." center/>
-    <div className="ai-capability-grid">{capabilities.map((item,index)=><article key={item.title}><span className="ai-capability-index">0{index+1}</span><item.icon size={25}/><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+    <div className="ai-capability-split">
+      <div className="ai-capability-grid">{capabilities.map((item,index)=><article key={item.title}><span className="ai-capability-index">0{index+1}</span><item.icon size={25}/><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+      <div className="ai-capability-media">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          disablePictureInPicture
+          disableRemotePlayback
+          controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
+          tabIndex={-1}
+          aria-hidden="true"
+          width={1920}
+          height={1080}
+        >
+          <source src="/images/hero-telemetry.mp4" type="video/mp4" />
+        </video>
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: 10,
+            pointerEvents: 'auto',
+            cursor: 'default',
+            background: 'transparent',
+          }}
+        />
+      </div>
+    </div>
     <p className="ai-section-line">Don’t just monitor machines. Understand them.</p>
   </div></section>;
 }
@@ -75,7 +105,7 @@ export function MobileSection(){
           <MobileAppMockup />
           <div className="mobile-video-wrap">
             <video
-              src="/images/predictive-intelligence.mp4"
+              src="/images/connected-assets-flow.mp4"
               autoPlay
               muted
               loop
