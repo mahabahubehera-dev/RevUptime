@@ -1,0 +1,109 @@
+name: Pre-Merge CI Validation
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Pre-Merge Validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 1. Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 2. Set Up Node.js Runtime (v22)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: 3. Verify Lockfile & Install Dependencies
+        id: install
+        run: |
+          echo "::group::npm ci output"
+          npm ci
+          echo "::endgroup::"
+
+      - name: 4. Verify Dependency Tree & Module Integrity
+        id: deps
+        run: |
+          echo "::group::npm ls output"
+          npm ls --depth=0
+          echo "::endgroup::"
+
+      - name: 5. TypeScript Static Analysis & Type Checking
+        id: typecheck
+        run: |
+          echo "::group::tsc --noEmit output"
+          npm run typecheck
+          echo "::endgroup::"
+
+      - name: 6. Next.js Production Build & Compilation Check
+        id: build
+        env:
+          NODE_ENV: production
+          NEXT_TELEMETRY_DISABLED: 1
+        run: |
+          echo "::group::next build output"
+          npm run build
+          echo "::endgroup::"
+
+      - name: 7. Generate Pre-Merge CI Summary
+        if: always()
+        run: |
+          echo "## 🛡️ Pre-Merge CI Validation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Check | Status | Details |" >> $GITHUB_STEP_SUMMARY
+          echo "| :--- | :---: | :--- |" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.install.outcome }}" == "success" ]; then
+            echo "| Dependency Installation (\`npm ci\`) | ✅ Passed | Clean install from \`package-lock.json\` |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| Dependency Installation (\`npm ci\`) | ❌ Failed | Lockfile mismatch or missing package. Run \`npm install\` locally and commit \`package-lock.json\`. |" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [ "${{ steps.deps.outcome }}" == "success" ]; then
+            echo "| Dependency Resolution (\`npm ls\`) | ✅ Passed | All top-level dependencies resolved |" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ steps.deps.outcome }}" == "failure" ]; then
+            echo "| Dependency Resolution (\`npm ls\`) | ❌ Failed | Unmet peer dependency or version conflict detected. Run \`npm ls\` locally to diagnose. |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| Dependency Resolution (\`npm ls\`) | ⏭️ Skipped | Skipped due to previous failure |" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [ "${{ steps.typecheck.outcome }}" == "success" ]; then
+            echo "| Type Checking (\`tsc --noEmit\`) | ✅ Passed | Zero TypeScript compiler errors |" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ steps.typecheck.outcome }}" == "failure" ]; then
+            echo "| Type Checking (\`tsc --noEmit\`) | ❌ Failed | Type errors or broken imports found. Run \`npm run typecheck\` locally to view file & line locations. |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| Type Checking (\`tsc --noEmit\`) | ⏭️ Skipped | Skipped due to previous failure |" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [ "${{ steps.build.outcome }}" == "success" ]; then
+            echo "| Production Build (\`next build\`) | ✅ Passed | Next.js compilation, bundle optimization, and page generation succeeded |" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ steps.build.outcome }}" == "failure" ]; then
+            echo "| Production Build (\`next build\`) | ❌ Failed | Next.js compilation or asset error. Review Step 6 log output above for stack trace. |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| Production Build (\`next build\`) | ⏭️ Skipped | Skipped due to previous failure |" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "> **Result**: All checks passed! This branch is verified and safe for review and merge into \`main\`." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "> ⚠️ **Result**: One or more validation checks failed. Please inspect the failed step log above, apply the fixes locally, and push back to \`dev\`." >> $GITHUB_STEP_SUMMARY
+          fi
