@@ -11,7 +11,9 @@ import { useEffect, useRef, useState } from 'react';
 export function HeroAnimationOverlay() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(true);
-  const [prefersReduced, setPrefersReduced] = useState(false);
+  const [prefersReduced, setPrefersReduced] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false
+  );
   const [rmsText, setRmsText] = useState('1.42');
   const [waveformPath, setWaveformPath] = useState('');
   const [scanX, setScanX] = useState(928);
@@ -19,7 +21,6 @@ export function HeroAnimationOverlay() {
   // Check reduced motion preference
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReduced(mq.matches);
     const handler = (e: MediaQueryListEvent) => setPrefersReduced(e.matches);
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);

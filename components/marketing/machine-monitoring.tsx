@@ -82,10 +82,16 @@ const monitoringSlides: MonitoringSlide[] = [
 ];
 
 export function MachineMonitoringSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isObserving, setIsObserving] = useState(false);
+  const [isVisible, setIsVisible] = useState(() =>
+    typeof window !== 'undefined' ? (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) : false
+  );
+  const [isObserving] = useState(() =>
+    typeof window !== 'undefined' ? (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && ('IntersectionObserver' in window)) : false
+  );
   const [activeSlide, setActiveSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isPaused, setIsPaused] = useState(() =>
+    typeof window !== 'undefined' ? (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) : false
+  );
   const [isHovered, setIsHovered] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -94,12 +100,9 @@ export function MachineMonitoringSection() {
     if (!section) return;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
-      setIsPaused(true);
-      setIsVisible(true);
       return;
     }
 
-    setIsObserving(true);
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setIsVisible(true);
