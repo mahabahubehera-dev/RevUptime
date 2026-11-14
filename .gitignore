@@ -7,5 +7,7 @@ node_modules
 .vercel
 .netlify
 test-results
+playwright-report
+blob-report
 # Local preview screenshots
 /output/
