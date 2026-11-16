@@ -245,7 +245,10 @@ export default function DeleteAccountPage() {
               assistance for your plant workspace, please reach out to our team at{' '}
               <a href="mailto:contact@revapex.ai" className="support-email-inline">
                 contact@revapex.ai
-              </a>.
+              </a>{' '}or call us in India at{' '}
+              <a href="tel:+919178111088" className="support-email-inline">+91 9178111088</a>{' '}
+              or in the US at{' '}
+              <a href="tel:+17372029931" className="support-email-inline">+1 7372029931</a>.
             </p>
           </section>
         </div>
