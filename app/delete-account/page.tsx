@@ -243,8 +243,8 @@ export default function DeleteAccountPage() {
             <p>
               If you have questions about specific data categories or need custom administrative
               assistance for your plant workspace, please reach out to our team at{' '}
-              <a href="mailto:info@revapex.ai" className="support-email-inline">
-                info@revapex.ai
+              <a href="mailto:contact@revapex.ai" className="support-email-inline">
+                contact@revapex.ai
               </a>.
             </p>
           </section>
