@@ -866,6 +866,22 @@ button {
     text-decoration: underline;
 }
 
+.footer-phone {
+    font-size: 12px;
+    color: #475569;
+    margin-top: 2px;
+}
+
+.footer-phone a {
+    color: #1679c8;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-phone a:hover {
+    text-decoration: underline;
+}
+
 .footer h3 {
     font-size: 12px;
     letter-spacing: 0;
@@ -4343,6 +4359,22 @@ td .status {
 }
 
 .contact-email a:hover {
+    text-decoration: underline;
+}
+
+.contact-phone {
+    font-size: 13.5px;
+    color: #2b394d;
+    margin-top: 2px;
+}
+
+.contact-phone a {
+    color: #1679c8;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-phone a:hover {
     text-decoration: underline;
 }
 
