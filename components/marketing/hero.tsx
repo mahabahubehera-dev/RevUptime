@@ -48,7 +48,11 @@ export function Hero() {
             />
           </div>
         </div>
-        <Link className="hero-local-seo" href="/blog/predictive-maintenance-steel-plants-odisha">Predictive maintenance for steel plants, mining operations, cement plants and process industries across the Globe.</Link>
+        <p className="hero-local-seo">
+          <Link href="/blog/predictive-maintenance-steel-plants-odisha">Predictive maintenance for steel plants,</Link>{' '}
+          mining operations, <Link href="/industries/cement">cement plants</Link> and process{' '}
+          <Link href="/industries">industries</Link> across the Globe.
+        </p>
       </div>
     </section>
   </>;

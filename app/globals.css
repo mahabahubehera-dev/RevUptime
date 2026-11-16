@@ -6802,13 +6802,17 @@ td button small,
     color: #69788e;
     font-size: 12px;
     line-height: 1.65;
+    text-decoration: none
+}
+
+.hero-local-seo a {
     text-decoration: underline;
     text-decoration-color: rgba(105, 120, 142, .45);
     text-underline-offset: 3px
 }
 
-.hero-local-seo:hover,
-.hero-local-seo:focus-visible {
+.hero-local-seo a:hover,
+.hero-local-seo a:focus-visible {
     color: #3156c8;
     text-decoration-color: currentColor
 }
