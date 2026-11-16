@@ -6,6 +6,9 @@ test.describe('E2E - Homepage & Visual Elements', () => {
     page.on('console', (msg) => {
       if (msg.type() === 'error') consoleErrors.push(msg.text());
     });
+    await page.route('https://www.googletagmanager.com/**', (route) =>
+      route.fulfill({ status: 200, contentType: 'application/javascript', body: '' })
+    );
 
     await page.goto('/', { waitUntil: 'domcontentloaded' });
 
@@ -35,10 +38,16 @@ test.describe('E2E - Homepage & Visual Elements', () => {
     const workflowStrip = page.locator('img.landing-hero-strip');
     await expect(workflowStrip).toBeVisible();
 
-    // 5. Local SEO anchor
-    const seoLink = page.locator('.hero-local-seo');
-    await expect(seoLink).toBeVisible();
-    await expect(seoLink).toHaveAttribute('href', '/blog/predictive-maintenance-steel-plants-odisha');
+    // 5. Local SEO links
+    const seoText = page.locator('.hero-local-seo');
+    await expect(seoText).toBeVisible();
+    await expect(seoText.getByRole('link', { name: 'Predictive maintenance for steel plants,' }))
+      .toHaveAttribute('href', '/blog/predictive-maintenance-steel-plants-odisha');
+    await expect(seoText.getByRole('link', { name: 'cement plants' }))
+      .toHaveAttribute('href', '/industries/cement');
+    await expect(seoText.getByRole('link', { name: 'industries' }))
+      .toHaveAttribute('href', '/industries');
+    await expect(seoText.getByRole('link')).toHaveCount(3);
 
     // Filter out expected third-party or benign warnings
     const fatalErrors = consoleErrors.filter(
