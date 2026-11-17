@@ -1444,14 +1444,37 @@ button {
     gap: 80px
 }
 
+.section.problem {
+    background-color: #0f1e3a;
+    color: #ffffff;
+}
+
+.problem .section-eyebrow {
+    color: #68b5ff;
+}
+
 .problem .split-heading h2 {
-    max-width: 650px
+    max-width: 650px;
+    color: #ffffff;
+}
+
+.problem .split-heading > p {
+    color: #a3b8d1;
 }
 
 .problem-card {
-    border: 1px solid var(--line);
-    border-radius: 7px;
-    padding: 27px 27px 31px
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 27px 27px 31px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.problem-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(104, 181, 255, 0.35);
+    transform: translateY(-2px);
 }
 
 .card-top {
@@ -1459,25 +1482,26 @@ button {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 28px;
-    color: #5b7594
+    color: #68b5ff;
 }
 
 .card-top span {
     font-size: 10px;
     letter-spacing: .08em;
-    color: #9aa8ba
+    color: #8da1be;
 }
 
 .problem-card h3 {
     font-size: 19px;
     letter-spacing: -.02em;
-    margin-bottom: 13px
+    margin-bottom: 13px;
+    color: #ffffff;
 }
 
 .problem-card p {
     font-size: 14px;
-    color: #647084;
-    line-height: 1.85
+    color: #a3b8d1;
+    line-height: 1.85;
 }
 
 .transition-line {
@@ -1487,12 +1511,12 @@ button {
     gap: 10px;
     font-size: 14px;
     font-weight: 500;
-    color: #386087;
-    margin-top: 34px
+    color: #90b8e4;
+    margin-top: 34px;
 }
 
 .transition-line svg {
-    color: var(--blue)
+    color: #38bdf8;
 }
 
 .process-grid {
@@ -7193,29 +7217,37 @@ img.landing-hero-strip {
     }
 
     .landing-hero-art {
-        margin: 0
+        position: relative;
+        width: calc(100% + 24px);
+        margin: 8px -12px 4px;
+        overflow: hidden;
+        border-radius: 12px;
     }
 
     .landing-hero-art img.landing-hero-main,
     .landing-hero-art video {
-        width: 100%;
-        max-width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-        margin-bottom: 0;
+        display: block;
+        width: 116%;
+        max-width: none;
+        margin-left: -13%;
+        margin-right: -3%;
         transform: none;
+        height: auto;
+        object-fit: contain;
         -webkit-mask-image:
-            linear-gradient(90deg, transparent 0%, #000 10%, #000 96%, transparent 100%),
-            linear-gradient(180deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+            linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.4) 1.5%, #000 5%, #000 96%, rgba(0, 0, 0, 0.4) 98.5%, transparent 100%),
+            linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 2%, #000 6%, #000 93%, rgba(0, 0, 0, 0.4) 98%, transparent 100%);
+        -webkit-mask-composite: source-in;
         mask-image:
-            linear-gradient(90deg, transparent 0%, #000 10%, #000 96%, transparent 100%),
-            linear-gradient(180deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+            linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.4) 1.5%, #000 5%, #000 96%, rgba(0, 0, 0, 0.4) 98.5%, transparent 100%),
+            linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 2%, #000 6%, #000 93%, rgba(0, 0, 0, 0.4) 98%, transparent 100%);
+        mask-composite: intersect;
     }
 
     img.landing-hero-strip {
         width: 100%;
         max-width: 100%;
-        margin: -24px 0
+        margin: -8px 0 0;
     }
 }
 
