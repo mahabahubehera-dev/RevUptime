@@ -82,16 +82,8 @@ const monitoringSlides: MonitoringSlide[] = [
 ];
 
 export function MachineMonitoringSection() {
-  const [isVisible, setIsVisible] = useState(() =>
-    typeof window !== 'undefined' ? (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) : false
-  );
-  const [isObserving] = useState(() =>
-    typeof window !== 'undefined' ? (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && ('IntersectionObserver' in window)) : false
-  );
   const [activeSlide, setActiveSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(() =>
-    typeof window !== 'undefined' ? (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) : false
-  );
+  const [isPaused, setIsPaused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -103,21 +95,25 @@ export function MachineMonitoringSection() {
       return;
     }
 
+    section.classList.add('is-observing');
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        setIsVisible(true);
+        section.classList.add('is-visible');
         observer.disconnect();
       }
     }, { threshold: 0.12 });
 
     observer.observe(section);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      section.classList.remove('is-observing', 'is-visible');
+    };
   }, []);
 
   useEffect(() => {
     if (isPaused || isHovered) return;
     const timer = window.setInterval(() => {
-      if (!document.hidden) {
+      if (!document.hidden && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         setActiveSlide((current) => (current + 1) % monitoringSlides.length);
       }
     }, 5500);
@@ -135,7 +131,7 @@ export function MachineMonitoringSection() {
   return (
     <section
       ref={sectionRef}
-      className={`section light-section machine-monitoring-section${isObserving ? ' is-observing' : ''}${isVisible ? ' is-visible' : ''}`}
+      className="section light-section machine-monitoring-section"
       aria-labelledby="machine-monitoring-title"
     >
       <div className="container">
