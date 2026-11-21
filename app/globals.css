@@ -12587,9 +12587,10 @@ img.landing-hero-strip {
     max-width: 820px;
     margin: 0 auto;
     color: #fff;
-    font-size: clamp(32px, 4vw, 48px);
-    line-height: 1.12;
-    letter-spacing: -.045em
+    font-size: 43px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -.025em
 }
 
 .multimodal-subtitle {
@@ -12796,7 +12797,7 @@ img.landing-hero-strip {
 @media (max-width: 767px) {
     .multimodal-section { padding: 72px 0 }
     .multimodal-heading { margin-bottom: 32px; text-align: left }
-    .multimodal-heading h2 { font-size: clamp(30px, 8vw, 40px) }
+    .multimodal-heading h2 { font-size: clamp(30px, 7vw, 43px) }
     .multimodal-subtitle { font-size: 17px }
     .multimodal-description { font-size: 14px }
     .multimodal-grid { grid-template-columns: 1fr; gap: 14px }
@@ -12810,7 +12811,7 @@ img.landing-hero-strip {
 .alerts-escalation-section {
     margin-top: 88px;
     color: #fff;
-    font-family: Inter, Arial, sans-serif
+    font-family: inherit
 }
 
 .alerts-escalation-eyebrow {
@@ -12826,7 +12827,6 @@ img.landing-hero-strip {
 .alerts-escalation-section>h3 {
     margin: 0 0 20px;
     color: #fff;
-    font-family: "Space Grotesk", Arial, sans-serif;
     font-size: 32px;
     font-weight: 700;
     line-height: 1.15
@@ -12864,7 +12864,6 @@ img.landing-hero-strip {
 .alerts-escalation-content h4 {
     margin: 0 0 10px;
     color: #fff;
-    font-family: "Space Grotesk", Arial, sans-serif;
     font-size: 22px;
     font-weight: 700;
     line-height: 1.25
@@ -12873,7 +12872,6 @@ img.landing-hero-strip {
 .alerts-escalation-content p {
     margin: 0;
     color: #afc0d6;
-    font-family: Inter, Arial, sans-serif;
     font-size: 16px;
     line-height: 1.55
 }
@@ -12892,7 +12890,6 @@ img.landing-hero-strip {
     border: 1px solid #1f6b4b;
     border-radius: 999px;
     color: #d8e7e0;
-    font-family: Inter, Arial, sans-serif;
     font-size: 13px;
     line-height: 1.35
 }
